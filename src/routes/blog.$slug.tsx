@@ -62,7 +62,7 @@ function Article() {
         <header className="mx-auto max-w-3xl px-5 pt-12 md:pt-16">
           <nav aria-label="Breadcrumb" className="text-xs text-muted-foreground"><Link to="/">Beranda</Link> / <Link to="/blog">Blog</Link> / <span>{p.category}</span></nav>
           <p className="mt-8 text-xs font-semibold uppercase tracking-wide text-primary">{p.category}</p>
-          <h1 className="mt-3 font-heading text-3xl font-semibold leading-tight md:text-[40px]">{p.title}</h1>
+          <h1 className="mt-3 font-display text-3xl font-semibold leading-tight md:text-[40px]">{p.title}</h1>
           {p.excerpt && <p className="mt-4 text-lg leading-8 text-muted-foreground">{p.excerpt}</p>}
           <div className="mt-6 flex flex-wrap items-center gap-x-3 gap-y-1 border-y py-4 text-sm text-muted-foreground">
             <span className="font-medium text-foreground">{p.author_name}</span><span>·</span>
@@ -99,7 +99,7 @@ function Article() {
             </div>
             <div className="mt-10 border-t pt-6"><p className="text-xs text-muted-foreground">{c.author}</p><p className="mt-1 font-semibold">{p.author_name}</p></div>
             <aside className="mt-10 rounded-lg bg-inverse p-6 text-inverse-foreground md:p-8">
-              <h2 className="font-heading text-xl font-semibold">{c.ctaTitle}</h2>
+              <h2 className="font-display text-xl font-semibold">{c.ctaTitle}</h2>
               <p className="mt-2 text-inverse-muted">{c.ctaText}</p>
               <Button asChild className="mt-5 rounded-full"><a href={whatsappUrl(`Halo Dimaloka! Saya membaca artikel "${p.title}" dan ingin konsultasi.`)} target="_blank" rel="noreferrer"><MessageCircle />{pageCopy.cta.whatsapp}</a></Button>
             </aside>
@@ -109,7 +109,7 @@ function Article() {
       {related.length > 0 && (
         <section className="border-t bg-muted/40 py-14">
           <div className="mx-auto max-w-6xl px-5">
-            <h2 className="font-heading text-2xl font-semibold">{c.related}</h2>
+            <h2 className="font-display text-2xl font-semibold">{c.related}</h2>
             <div className="mt-8 grid gap-8 sm:grid-cols-3">
               {related.map((r) => (
                 <Link key={r.id} to="/blog/$slug" params={{ slug: r.slug }} className="group block">

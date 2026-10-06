@@ -10,17 +10,39 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as AuthenticatedRouteRouteImport } from './routes/_authenticated/route'
+import { Route as AuthRouteImport } from './routes/auth'
 import { Route as KebijakanPrivasiRouteImport } from './routes/kebijakan-privasi'
 import { Route as PortofolioRouteImport } from './routes/portofolio'
+import { Route as ResetPasswordRouteImport } from './routes/reset-password'
+import { Route as TentangKamiRouteImport } from './routes/tentang-kami'
+import { Route as AuthenticatedAdminRouteImport } from './routes/_authenticated/admin'
+import { Route as BlogIndexRouteImport } from './routes/blog.index'
+import { Route as BlogSlugRouteImport } from './routes/blog.$slug'
 import { Route as TokoIndexRouteImport } from './routes/toko.index'
 import { Route as TokoCartRouteImport } from './routes/toko.cart'
 import { Route as TokoCheckoutRouteImport } from './routes/toko.checkout'
 import { Route as TokoTerimaKasihRouteImport } from './routes/toko.terima-kasih'
+import { Route as AuthenticatedAdminIndexRouteImport } from './routes/_authenticated/admin.index'
+import { Route as AuthenticatedAdminKontenRouteImport } from './routes/_authenticated/admin.konten'
+import { Route as AuthenticatedAdminPaketRouteImport } from './routes/_authenticated/admin.paket'
+import { Route as AuthenticatedAdminPenggunaRouteImport } from './routes/_authenticated/admin.pengguna'
 import { Route as TokoPSlugRouteImport } from './routes/toko.p.$slug'
+import { Route as AuthenticatedAdminBlogIndexRouteImport } from './routes/_authenticated/admin.blog.index'
+import { Route as AuthenticatedAdminBlogIdRouteImport } from './routes/_authenticated/admin.blog.$id'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AuthenticatedRouteRoute = AuthenticatedRouteRouteImport.update({
+  id: '/_authenticated',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AuthRoute = AuthRouteImport.update({
+  id: '/auth',
+  path: '/auth',
   getParentRoute: () => rootRouteImport,
 } as any)
 const KebijakanPrivasiRoute = KebijakanPrivasiRouteImport.update({
@@ -31,6 +53,31 @@ const KebijakanPrivasiRoute = KebijakanPrivasiRouteImport.update({
 const PortofolioRoute = PortofolioRouteImport.update({
   id: '/portofolio',
   path: '/portofolio',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ResetPasswordRoute = ResetPasswordRouteImport.update({
+  id: '/reset-password',
+  path: '/reset-password',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const TentangKamiRoute = TentangKamiRouteImport.update({
+  id: '/tentang-kami',
+  path: '/tentang-kami',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AuthenticatedAdminRoute = AuthenticatedAdminRouteImport.update({
+  id: '/admin',
+  path: '/admin',
+  getParentRoute: () => AuthenticatedRouteRoute,
+} as any)
+const BlogIndexRoute = BlogIndexRouteImport.update({
+  id: '/blog/',
+  path: '/blog/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const BlogSlugRoute = BlogSlugRouteImport.update({
+  id: '/blog/$slug',
+  path: '/blog/$slug',
   getParentRoute: () => rootRouteImport,
 } as any)
 const TokoIndexRoute = TokoIndexRouteImport.update({
@@ -53,83 +100,195 @@ const TokoTerimaKasihRoute = TokoTerimaKasihRouteImport.update({
   path: '/toko/terima-kasih',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AuthenticatedAdminIndexRoute = AuthenticatedAdminIndexRouteImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => AuthenticatedAdminRoute,
+} as any)
+const AuthenticatedAdminKontenRoute =
+  AuthenticatedAdminKontenRouteImport.update({
+    id: '/konten',
+    path: '/konten',
+    getParentRoute: () => AuthenticatedAdminRoute,
+  } as any)
+const AuthenticatedAdminPaketRoute = AuthenticatedAdminPaketRouteImport.update({
+  id: '/paket',
+  path: '/paket',
+  getParentRoute: () => AuthenticatedAdminRoute,
+} as any)
+const AuthenticatedAdminPenggunaRoute =
+  AuthenticatedAdminPenggunaRouteImport.update({
+    id: '/pengguna',
+    path: '/pengguna',
+    getParentRoute: () => AuthenticatedAdminRoute,
+  } as any)
 const TokoPSlugRoute = TokoPSlugRouteImport.update({
   id: '/toko/p/$slug',
   path: '/toko/p/$slug',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AuthenticatedAdminBlogIndexRoute =
+  AuthenticatedAdminBlogIndexRouteImport.update({
+    id: '/blog/',
+    path: '/blog/',
+    getParentRoute: () => AuthenticatedAdminRoute,
+  } as any)
+const AuthenticatedAdminBlogIdRoute =
+  AuthenticatedAdminBlogIdRouteImport.update({
+    id: '/blog/$id',
+    path: '/blog/$id',
+    getParentRoute: () => AuthenticatedAdminRoute,
+  } as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/auth': typeof AuthRoute
   '/kebijakan-privasi': typeof KebijakanPrivasiRoute
   '/portofolio': typeof PortofolioRoute
+  '/reset-password': typeof ResetPasswordRoute
+  '/tentang-kami': typeof TentangKamiRoute
+  '/admin': typeof AuthenticatedAdminRouteWithChildren
+  '/blog/$slug': typeof BlogSlugRoute
   '/toko/cart': typeof TokoCartRoute
   '/toko/checkout': typeof TokoCheckoutRoute
   '/toko/terima-kasih': typeof TokoTerimaKasihRoute
+  '/blog/': typeof BlogIndexRoute
   '/toko/': typeof TokoIndexRoute
+  '/admin/konten': typeof AuthenticatedAdminKontenRoute
+  '/admin/paket': typeof AuthenticatedAdminPaketRoute
+  '/admin/pengguna': typeof AuthenticatedAdminPenggunaRoute
   '/toko/p/$slug': typeof TokoPSlugRoute
+  '/admin/': typeof AuthenticatedAdminIndexRoute
+  '/admin/blog/$id': typeof AuthenticatedAdminBlogIdRoute
+  '/admin/blog/': typeof AuthenticatedAdminBlogIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/auth': typeof AuthRoute
   '/kebijakan-privasi': typeof KebijakanPrivasiRoute
   '/portofolio': typeof PortofolioRoute
+  '/reset-password': typeof ResetPasswordRoute
+  '/tentang-kami': typeof TentangKamiRoute
+  '/blog/$slug': typeof BlogSlugRoute
   '/toko/cart': typeof TokoCartRoute
   '/toko/checkout': typeof TokoCheckoutRoute
   '/toko/terima-kasih': typeof TokoTerimaKasihRoute
+  '/blog': typeof BlogIndexRoute
   '/toko': typeof TokoIndexRoute
+  '/admin/konten': typeof AuthenticatedAdminKontenRoute
+  '/admin/paket': typeof AuthenticatedAdminPaketRoute
+  '/admin/pengguna': typeof AuthenticatedAdminPenggunaRoute
   '/toko/p/$slug': typeof TokoPSlugRoute
+  '/admin': typeof AuthenticatedAdminIndexRoute
+  '/admin/blog/$id': typeof AuthenticatedAdminBlogIdRoute
+  '/admin/blog': typeof AuthenticatedAdminBlogIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/_authenticated': typeof AuthenticatedRouteRouteWithChildren
+  '/auth': typeof AuthRoute
   '/kebijakan-privasi': typeof KebijakanPrivasiRoute
   '/portofolio': typeof PortofolioRoute
+  '/reset-password': typeof ResetPasswordRoute
+  '/tentang-kami': typeof TentangKamiRoute
+  '/_authenticated/admin': typeof AuthenticatedAdminRouteWithChildren
+  '/blog/$slug': typeof BlogSlugRoute
   '/toko/cart': typeof TokoCartRoute
   '/toko/checkout': typeof TokoCheckoutRoute
   '/toko/terima-kasih': typeof TokoTerimaKasihRoute
+  '/blog/': typeof BlogIndexRoute
   '/toko/': typeof TokoIndexRoute
+  '/_authenticated/admin/konten': typeof AuthenticatedAdminKontenRoute
+  '/_authenticated/admin/paket': typeof AuthenticatedAdminPaketRoute
+  '/_authenticated/admin/pengguna': typeof AuthenticatedAdminPenggunaRoute
   '/toko/p/$slug': typeof TokoPSlugRoute
+  '/_authenticated/admin/': typeof AuthenticatedAdminIndexRoute
+  '/_authenticated/admin/blog/$id': typeof AuthenticatedAdminBlogIdRoute
+  '/_authenticated/admin/blog/': typeof AuthenticatedAdminBlogIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
+    | '/auth'
     | '/kebijakan-privasi'
     | '/portofolio'
+    | '/reset-password'
+    | '/tentang-kami'
+    | '/admin'
+    | '/blog/$slug'
     | '/toko/cart'
     | '/toko/checkout'
     | '/toko/terima-kasih'
+    | '/blog/'
     | '/toko/'
+    | '/admin/konten'
+    | '/admin/paket'
+    | '/admin/pengguna'
     | '/toko/p/$slug'
+    | '/admin/'
+    | '/admin/blog/$id'
+    | '/admin/blog/'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
+    | '/auth'
     | '/kebijakan-privasi'
     | '/portofolio'
+    | '/reset-password'
+    | '/tentang-kami'
+    | '/blog/$slug'
     | '/toko/cart'
     | '/toko/checkout'
     | '/toko/terima-kasih'
+    | '/blog'
     | '/toko'
+    | '/admin/konten'
+    | '/admin/paket'
+    | '/admin/pengguna'
     | '/toko/p/$slug'
+    | '/admin'
+    | '/admin/blog/$id'
+    | '/admin/blog'
   id:
     | '__root__'
     | '/'
+    | '/_authenticated'
+    | '/auth'
     | '/kebijakan-privasi'
     | '/portofolio'
+    | '/reset-password'
+    | '/tentang-kami'
+    | '/_authenticated/admin'
+    | '/blog/$slug'
     | '/toko/cart'
     | '/toko/checkout'
     | '/toko/terima-kasih'
+    | '/blog/'
     | '/toko/'
+    | '/_authenticated/admin/konten'
+    | '/_authenticated/admin/paket'
+    | '/_authenticated/admin/pengguna'
     | '/toko/p/$slug'
+    | '/_authenticated/admin/'
+    | '/_authenticated/admin/blog/$id'
+    | '/_authenticated/admin/blog/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AuthenticatedRouteRoute: typeof AuthenticatedRouteRouteWithChildren
+  AuthRoute: typeof AuthRoute
   KebijakanPrivasiRoute: typeof KebijakanPrivasiRoute
   PortofolioRoute: typeof PortofolioRoute
+  ResetPasswordRoute: typeof ResetPasswordRoute
+  TentangKamiRoute: typeof TentangKamiRoute
+  BlogSlugRoute: typeof BlogSlugRoute
   TokoCartRoute: typeof TokoCartRoute
   TokoCheckoutRoute: typeof TokoCheckoutRoute
   TokoTerimaKasihRoute: typeof TokoTerimaKasihRoute
+  BlogIndexRoute: typeof BlogIndexRoute
   TokoIndexRoute: typeof TokoIndexRoute
   TokoPSlugRoute: typeof TokoPSlugRoute
 }
@@ -141,6 +300,20 @@ declare module '@tanstack/react-router' {
       path: '/'
       fullPath: '/'
       preLoaderRoute: typeof IndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/_authenticated': {
+      id: '/_authenticated'
+      path: ''
+      fullPath: '/'
+      preLoaderRoute: typeof AuthenticatedRouteRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/auth': {
+      id: '/auth'
+      path: '/auth'
+      fullPath: '/auth'
+      preLoaderRoute: typeof AuthRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/kebijakan-privasi': {
@@ -155,6 +328,41 @@ declare module '@tanstack/react-router' {
       path: '/portofolio'
       fullPath: '/portofolio'
       preLoaderRoute: typeof PortofolioRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/reset-password': {
+      id: '/reset-password'
+      path: '/reset-password'
+      fullPath: '/reset-password'
+      preLoaderRoute: typeof ResetPasswordRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/tentang-kami': {
+      id: '/tentang-kami'
+      path: '/tentang-kami'
+      fullPath: '/tentang-kami'
+      preLoaderRoute: typeof TentangKamiRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/_authenticated/admin': {
+      id: '/_authenticated/admin'
+      path: '/admin'
+      fullPath: '/admin'
+      preLoaderRoute: typeof AuthenticatedAdminRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
+    '/blog/': {
+      id: '/blog/'
+      path: '/blog'
+      fullPath: '/blog/'
+      preLoaderRoute: typeof BlogIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/blog/$slug': {
+      id: '/blog/$slug'
+      path: '/blog/$slug'
+      fullPath: '/blog/$slug'
+      preLoaderRoute: typeof BlogSlugRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/toko/': {
@@ -185,6 +393,34 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof TokoTerimaKasihRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/_authenticated/admin/': {
+      id: '/_authenticated/admin/'
+      path: '/'
+      fullPath: '/admin/'
+      preLoaderRoute: typeof AuthenticatedAdminIndexRouteImport
+      parentRoute: typeof AuthenticatedAdminRoute
+    }
+    '/_authenticated/admin/konten': {
+      id: '/_authenticated/admin/konten'
+      path: '/konten'
+      fullPath: '/admin/konten'
+      preLoaderRoute: typeof AuthenticatedAdminKontenRouteImport
+      parentRoute: typeof AuthenticatedAdminRoute
+    }
+    '/_authenticated/admin/paket': {
+      id: '/_authenticated/admin/paket'
+      path: '/paket'
+      fullPath: '/admin/paket'
+      preLoaderRoute: typeof AuthenticatedAdminPaketRouteImport
+      parentRoute: typeof AuthenticatedAdminRoute
+    }
+    '/_authenticated/admin/pengguna': {
+      id: '/_authenticated/admin/pengguna'
+      path: '/pengguna'
+      fullPath: '/admin/pengguna'
+      preLoaderRoute: typeof AuthenticatedAdminPenggunaRouteImport
+      parentRoute: typeof AuthenticatedAdminRoute
+    }
     '/toko/p/$slug': {
       id: '/toko/p/$slug'
       path: '/toko/p/$slug'
@@ -192,16 +428,68 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof TokoPSlugRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/_authenticated/admin/blog/': {
+      id: '/_authenticated/admin/blog/'
+      path: '/blog'
+      fullPath: '/admin/blog/'
+      preLoaderRoute: typeof AuthenticatedAdminBlogIndexRouteImport
+      parentRoute: typeof AuthenticatedAdminRoute
+    }
+    '/_authenticated/admin/blog/$id': {
+      id: '/_authenticated/admin/blog/$id'
+      path: '/blog/$id'
+      fullPath: '/admin/blog/$id'
+      preLoaderRoute: typeof AuthenticatedAdminBlogIdRouteImport
+      parentRoute: typeof AuthenticatedAdminRoute
+    }
   }
 }
 
+interface AuthenticatedAdminRouteChildren {
+  AuthenticatedAdminKontenRoute: typeof AuthenticatedAdminKontenRoute
+  AuthenticatedAdminPaketRoute: typeof AuthenticatedAdminPaketRoute
+  AuthenticatedAdminPenggunaRoute: typeof AuthenticatedAdminPenggunaRoute
+  AuthenticatedAdminIndexRoute: typeof AuthenticatedAdminIndexRoute
+  AuthenticatedAdminBlogIdRoute: typeof AuthenticatedAdminBlogIdRoute
+  AuthenticatedAdminBlogIndexRoute: typeof AuthenticatedAdminBlogIndexRoute
+}
+
+const AuthenticatedAdminRouteChildren: AuthenticatedAdminRouteChildren = {
+  AuthenticatedAdminKontenRoute: AuthenticatedAdminKontenRoute,
+  AuthenticatedAdminPaketRoute: AuthenticatedAdminPaketRoute,
+  AuthenticatedAdminPenggunaRoute: AuthenticatedAdminPenggunaRoute,
+  AuthenticatedAdminIndexRoute: AuthenticatedAdminIndexRoute,
+  AuthenticatedAdminBlogIdRoute: AuthenticatedAdminBlogIdRoute,
+  AuthenticatedAdminBlogIndexRoute: AuthenticatedAdminBlogIndexRoute,
+}
+
+const AuthenticatedAdminRouteWithChildren =
+  AuthenticatedAdminRoute._addFileChildren(AuthenticatedAdminRouteChildren)
+
+interface AuthenticatedRouteRouteChildren {
+  AuthenticatedAdminRoute: typeof AuthenticatedAdminRouteWithChildren
+}
+
+const AuthenticatedRouteRouteChildren: AuthenticatedRouteRouteChildren = {
+  AuthenticatedAdminRoute: AuthenticatedAdminRouteWithChildren,
+}
+
+const AuthenticatedRouteRouteWithChildren =
+  AuthenticatedRouteRoute._addFileChildren(AuthenticatedRouteRouteChildren)
+
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AuthenticatedRouteRoute: AuthenticatedRouteRouteWithChildren,
+  AuthRoute: AuthRoute,
   KebijakanPrivasiRoute: KebijakanPrivasiRoute,
   PortofolioRoute: PortofolioRoute,
+  ResetPasswordRoute: ResetPasswordRoute,
+  TentangKamiRoute: TentangKamiRoute,
+  BlogSlugRoute: BlogSlugRoute,
   TokoCartRoute: TokoCartRoute,
   TokoCheckoutRoute: TokoCheckoutRoute,
   TokoTerimaKasihRoute: TokoTerimaKasihRoute,
+  BlogIndexRoute: BlogIndexRoute,
   TokoIndexRoute: TokoIndexRoute,
   TokoPSlugRoute: TokoPSlugRoute,
 }

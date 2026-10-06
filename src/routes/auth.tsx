@@ -66,7 +66,7 @@ function AuthPage() {
       <section className="hidden flex-col justify-between p-12 lg:flex">
         <Link to="/"><img src={logo.url} alt="Dimaloka" className="h-auto w-40" /></Link>
         <div>
-          <h1 className="font-heading text-3xl font-semibold leading-tight">Kelola isi website Dimaloka dari satu tempat.</h1>
+          <h1 className="font-display text-3xl font-semibold leading-tight">Kelola isi website Dimaloka dari satu tempat.</h1>
           <p className="mt-4 max-w-md text-inverse-muted">Halaman, paket toko, dan artikel blog dengan pengecekan SEO.</p>
         </div>
         <p className="text-xs text-inverse-muted">© {new Date().getFullYear()} Dimaloka</p>

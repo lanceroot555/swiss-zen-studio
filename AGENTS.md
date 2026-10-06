@@ -19,3 +19,6 @@
 - Share the site header, footer, and cart provider in the root layout so all content pages maintain one navigation and shopping state.
 - Resolve guest order catalog values in a validated server function and persist private order snapshots with rate limiting; this prevents client-controlled pricing or public order reads.
 - Store the guest cart locally and synchronize browser tabs, while keeping the last confirmation session-scoped to avoid requiring accounts.
+- Editable page copy lives as defaults in site-config; database overrides (site_content) are deep-merged onto those objects by applyContent in the root loader and before order pricing, so pages keep importing config while admins edit content.
+- Dashboard roles live in a separate user_roles table (administrator, editor) checked through has_role/is_staff in RLS; user management runs in admin-verified server functions because it needs privileged auth APIs.
+- Blog posts are stored as Markdown and read publicly only through published-filtered server functions so drafts never reach visitors.

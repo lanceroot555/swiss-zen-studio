@@ -49,7 +49,7 @@ function BlogIndex() {
         <div className="mx-auto max-w-7xl px-5 md:px-8">
           <nav aria-label="Breadcrumb" className="text-xs text-inverse-muted"><Link to="/">Beranda</Link> / <span>Blog</span></nav>
           <p className="mt-6 text-xs font-semibold tracking-widest text-primary">{c.eyebrow}</p>
-          <h1 className="mt-3 max-w-3xl font-heading text-3xl font-semibold leading-tight md:text-4xl">{c.title}</h1>
+          <h1 className="mt-3 max-w-3xl font-display text-3xl font-semibold leading-tight md:text-4xl">{c.title}</h1>
           <p className="mt-4 max-w-2xl text-inverse-muted">{c.description}</p>
         </div>
       </section>
@@ -71,7 +71,7 @@ function BlogIndex() {
                 </Link>
                 <div>
                   <p className="text-xs font-semibold uppercase tracking-wide text-primary">{c.featured} · {featured.category}</p>
-                  <h2 className="mt-3 font-heading text-2xl font-semibold leading-snug md:text-3xl"><Link to="/blog/$slug" params={{ slug: featured.slug }} className="hover:text-primary">{featured.title}</Link></h2>
+                  <h2 className="mt-3 font-display text-2xl font-semibold leading-snug md:text-3xl"><Link to="/blog/$slug" params={{ slug: featured.slug }} className="hover:text-primary">{featured.title}</Link></h2>
                   <p className="mt-3 leading-7 text-muted-foreground">{featured.excerpt}</p>
                   <div className="mt-4"><Meta p={featured} /></div>
                   <Link to="/blog/$slug" params={{ slug: featured.slug }} className="mt-5 inline-block text-sm font-semibold text-primary">{c.readMore} →</Link>
