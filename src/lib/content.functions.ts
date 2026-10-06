@@ -3,9 +3,9 @@ import { z } from "zod";
 
 export type PublicPost = {
   id: string; slug: string; title: string; excerpt: string; content: string; cover_image_url: string | null; cover_alt: string;
-  category: string; tags: string[]; meta_title: string; meta_description: string; published_at: string | null; updated_at: string; author_name: string;
+  structured_schema: string; category: string; tags: string[]; meta_title: string; meta_description: string; published_at: string | null; updated_at: string; author_name: string;
 };
-const listColumns = "id, slug, title, excerpt, cover_image_url, cover_alt, category, tags, meta_title, meta_description, published_at, updated_at, author_name, content";
+const listColumns = "id, slug, title, excerpt, cover_image_url, cover_alt, category, tags, meta_title, meta_description, published_at, updated_at, author_name, content, structured_schema";
 
 export const getPublicContent = createServerFn({ method: "GET" }).handler(async () => {
   const { loadContentOverrides } = await import("./public-supabase.server");

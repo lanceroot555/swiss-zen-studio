@@ -1,3 +1,5 @@
+import { SchemaInput } from "@/components/admin/schema-input";
+import { parseSchema, serializeSchema } from "@/lib/structured-schema";
 import { createFileRoute, Link, useNavigate } from "@tanstack/react-router";
 import { useQuery, useQueryClient } from "@tanstack/react-query";
 import { useEffect, useState } from "react";
@@ -14,7 +16,7 @@ import { Label } from "@/components/ui/label";
 
 export const Route = createFileRoute("/_authenticated/admin/blog/$id")({ component: Editor });
 
-const empty = { slug: "", title: "", excerpt: "", content: "", cover_image_url: "" as string | null, cover_alt: "", category: "SEO", tags: [] as string[], meta_title: "", meta_description: "", focus_keyword: "", status: "draft", published_at: null as string | null, author_name: "Tim Dimaloka" };
+const empty = { structured_schema: "", slug: "", title: "", excerpt: "", content: "", cover_image_url: "" as string | null, cover_alt: "", category: "SEO", tags: [] as string[], meta_title: "", meta_description: "", focus_keyword: "", status: "draft", published_at: null as string | null, author_name: "Tim Dimaloka" };
 type Post = typeof empty;
 
 function Editor() {
@@ -42,9 +44,11 @@ function Editor() {
 
   async function save(status: "draft" | "published") {
     if (!post.title.trim() || !post.slug.trim()) return void toast.error("Judul dan slug wajib diisi.");
+    let structured_schema = "";
+    try { const schema = parseSchema(post.structured_schema); structured_schema = schema ? serializeSchema(schema) : ""; } catch (e) { return void toast.error(e instanceof Error ? e.message : "Schema tidak valid."); }
     setBusy(true);
     const { data: auth } = await supabase.auth.getUser();
-    const payload = { ...post, status, cover_image_url: post.cover_image_url || null, published_at: status === "published" ? post.published_at ?? new Date().toISOString() : post.published_at };
+    const payload = { ...post, structured_schema, status, cover_image_url: post.cover_image_url || null, published_at: status === "published" ? post.published_at ?? new Date().toISOString() : post.published_at };
     const res = isNew
       ? await supabase.from("blog_posts").insert({ ...payload, author_id: auth.user?.id ?? null }).select("id").single()
       : await supabase.from("blog_posts").update(payload).eq("id", id).select("id").single();
@@ -97,6 +101,7 @@ function Editor() {
             <div className="space-y-1.5"><Label>URL gambar sampul</Label><Input placeholder="https://…" value={post.cover_image_url ?? ""} onChange={(e) => set({ cover_image_url: e.target.value })} /></div>
             <div className="space-y-1.5"><Label>Teks alternatif gambar</Label><Input value={post.cover_alt} onChange={(e) => set({ cover_alt: e.target.value })} /></div>
           </div>
+          <div className="space-y-4 rounded-lg border bg-background p-5"><SchemaInput value={post.structured_schema} onChange={structured_schema => set({structured_schema})} /></div>
           <div className="space-y-4 rounded-lg border bg-background p-5">
             <div className="flex items-center justify-between"><h2 className="font-semibold">Optimasi SEO</h2><span className={`text-sm font-semibold ${score >= 75 ? "text-primary" : "text-muted-foreground"}`}>{score}/100</span></div>
             <div className="space-y-1.5"><Label>Kata kunci utama</Label><Input value={post.focus_keyword} onChange={(e) => set({ focus_keyword: e.target.value })} placeholder="contoh: jasa seo umkm" /></div>

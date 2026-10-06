@@ -1,3 +1,4 @@
+import { schemaScripts } from "@/lib/structured-schema";
 import { createFileRoute, Link, notFound } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
 import { toast } from "sonner";
@@ -35,7 +36,7 @@ export const Route = createFileRoute("/blog/$slug")({
         ...(img ? [{ property: "og:image", content: img }, { name: "twitter:image", content: img }] : []),
       ],
       links: [{ rel: "canonical", href: url }],
-      scripts: [{ type: "application/ld+json", children: JSON.stringify(jsonLd) }],
+      scripts: schemaScripts(p.structured_schema, jsonLd),
     };
   },
   component: Article,

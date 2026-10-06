@@ -1,10 +1,11 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute, redirect } from "@tanstack/react-router";
 import { MessageCircle } from "lucide-react";
 import { aboutCopy as c, whatsappUrl, siteConfig, pageCopy } from "@/lib/site-config";
 import { pageHead } from "@/lib/seo";
 import { Button } from "@/components/ui/button";
 
 export const Route = createFileRoute("/tentang-kami")({
+  beforeLoad: () => { throw redirect({ to: "/hubungi-kami", statusCode: 301 }); },
   head: () => pageHead(c.seoTitle, c.seoDescription, "/tentang-kami"),
   component: About,
 });

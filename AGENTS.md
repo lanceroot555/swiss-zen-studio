@@ -22,3 +22,6 @@
 - Editable page copy lives as defaults in site-config; database overrides (site_content) are deep-merged onto those objects by applyContent in the root loader and before order pricing, so pages keep importing config while admins edit content.
 - Dashboard roles live in a separate user_roles table (administrator, editor) checked through has_role/is_staff in RLS; user management runs in admin-verified server functions because it needs privileged auth APIs.
 - Blog posts are stored as Markdown and read publicly only through published-filtered server functions so drafts never reach visitors.
+- Navigation is stored as editable menu objects and shared by header and footer; map approved destinations to typed router links to keep navigation functional.
+- Service landing pages use a shared dynamic route with centralized per-service content; this keeps six service pages independently editable with a consistent conversion structure.
+- Page JSON-LD lives in editable page settings and article JSON-LD in blog_posts; parse and escape data before rendering and replace default schema when custom schema exists to prevent executable scripts and duplicate entities.
