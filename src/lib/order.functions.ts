@@ -9,7 +9,7 @@ export const submitOrder = createServerFn({method:'POST'}).inputValidator((data:
  // Guest writes are an intentionally public capability. Validate and resolve all trusted catalog values before privileged persistence; no public read endpoint exists.
  const {supabaseAdmin}=await import('@/integrations/supabase/client.server');
  const source=getRequestHeader('cf-connecting-ip') ?? data.phone;
- const hashBuffer=await crypto.subtle.digest('SHA-256',new TextEncoder().encode(`${source}:${data.phone}`));
+ const hashBuffer=await crypto.subtle.digest('SHA-256',new TextEncoder().encode(source));
  const hash=Array.from(new Uint8Array(hashBuffer),b=>b.toString(16).padStart(2,'0')).join('');
  const {data:allowed,error:limitError}=await supabaseAdmin.rpc('claim_order_attempt',{p_source_hash:hash});
  if(limitError) throw new Error(shopCopy.errors.failed);
