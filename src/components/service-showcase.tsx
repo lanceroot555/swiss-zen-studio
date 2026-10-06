@@ -17,7 +17,7 @@ export function ServiceShowcase(){
     const reduced=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     el.scrollBy({left:direction*distance,behavior:reduced?'instant':'smooth'});
   }
-  return <><section id="layanan" className="bg-inverse text-inverse-foreground"><div className="site-section">
+  return <><section id="layanan" className="bg-inverse section-glow-dark text-inverse-foreground"><div className="site-section">
     <div className="max-w-2xl"><p className="text-xs font-bold text-primary">{c.eyebrow}</p><h2 className="mt-4 text-[28px] font-extrabold leading-snug md:text-[32px]">{c.title}</h2><p className="mt-5 text-base leading-7 text-inverse-muted">{c.description}</p></div>
     <div ref={track} className="service-track mt-8 flex snap-x snap-mandatory gap-6 overflow-x-auto py-4 [scrollbar-width:none]">
       {servicePages.items.map((s,i)=><Link to="/layanan/$slug" params={{slug:s.slug}} key={s.slug} className="service-slide group flex w-[88%] shrink-0 snap-start flex-col overflow-hidden rounded-lg border border-inverse-border bg-inverse-foreground/3 outline-offset-4 focus-visible:outline-primary sm:w-[46%] lg:w-[calc((100%-3rem)/3)]">

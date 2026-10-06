@@ -46,7 +46,7 @@ function Service() {
   return (
     <main>
       {/* Hero */}
-      <section className="bg-inverse text-inverse-foreground">
+      <section className="bg-inverse section-glow-dark text-inverse-foreground">
         <div className="site-section grid items-center gap-12 lg:grid-cols-[1.05fr_1fr]">
           <div>
             <nav aria-label="Breadcrumb" className="flex flex-wrap gap-2 text-xs font-medium text-inverse-foreground/80"><Link to="/">Home</Link><span>/</span><Link to="/layanan">Layanan</Link><span>/</span><span>{s.title}</span></nav>
@@ -76,7 +76,7 @@ function Service() {
 
       {/* Feature tabs */}
       {active && (
-        <section id="fitur" className="scroll-mt-24 border-y bg-secondary">
+        <section id="fitur" className="scroll-mt-24 border-y bg-secondary section-glow-light">
           <div className="site-section">
             <Eyebrow>{s.featureEyebrow}</Eyebrow>
             <h2 className="mt-3 max-w-2xl font-display text-2xl font-bold leading-snug md:text-3xl">{s.featureTitle}</h2>
@@ -113,7 +113,7 @@ function Service() {
 
       {/* Devices */}
       {s.devicePoints && (
-        <section className="bg-inverse text-inverse-foreground">
+        <section className="bg-inverse section-glow-dark text-inverse-foreground">
           <div className="site-section grid items-center gap-12 lg:grid-cols-2">
             <div>
               <Eyebrow light>{s.deviceEyebrow}</Eyebrow>
@@ -148,7 +148,7 @@ function Service() {
       </section>
 
       {/* CTA */}
-      <section className="bg-inverse text-inverse-foreground">
+      <section className="bg-inverse section-glow-dark text-inverse-foreground">
         <div className="site-section grid items-center gap-8 lg:grid-cols-[1.5fr_1fr]">
           <div>
             <Eyebrow light>Siap Mulai</Eyebrow>

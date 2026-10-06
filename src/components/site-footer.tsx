@@ -9,7 +9,7 @@ export function SiteFooter() {
   const email = contactPageCopy.publicEmail.trim();
   return (
     <>
-      <footer className="border-t border-inverse-border bg-inverse text-inverse-foreground">
+      <footer className="border-t border-inverse-border bg-inverse section-glow-dark text-inverse-foreground">
         <div className="mx-auto max-w-7xl px-5 py-14 md:px-8 md:py-16">
           <div className="grid gap-12 border-b border-inverse-border pb-12 sm:grid-cols-2 lg:grid-cols-4">
             {/* Brand + kontak */}
