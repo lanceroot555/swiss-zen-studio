@@ -48,7 +48,7 @@ export const faqs = [
   { question: "Apakah ada kontrak minimal?", answer: "Ketentuan kerja mengikuti layanan yang dipilih. Semuanya dijelaskan sebelum mulai, tanpa biaya tersembunyi." },
   { question: "Apakah saya bisa memperbarui website sendiri?", answer: "Bisa. Kami dapat menyiapkan pengelolaan konten yang mudah dan memberikan panduan penggunaan setelah website selesai." },
   { question: "Bagaimana sistem pembayarannya?", answer: "Skema pembayaran dijelaskan dalam penawaran sesuai lingkup proyek. Pekerjaan dimulai setelah ruang lingkup dan jadwal disetujui bersama." },
-] as const;
+];
 export const pageCopy = {
   navigation: [["Layanan", "#layanan"], ["Proses Kerja", "#proses"], ["Portofolio", "/portofolio"], ["Paket & Harga", "/toko"], ["FAQ", "#faq"], ["Blog", "/blog"]],
   seo: {
@@ -65,7 +65,7 @@ export const pageCopy = {
     portfolio: { eyebrow: "Portofolio", title: "Studi kasus Dimaloka.", description: "Portofolio dan studi kasus sedang disiapkan untuk dipublikasikan. Ingin mendiskusikan proyek serupa dengan kebutuhan Anda? Hubungi kami." },
     pricing: { eyebrow: "Paket & Harga", title: "Paket website dan SEO sesuai kebutuhan.", description: "Biaya mengikuti jumlah halaman, fitur, dan lingkup pekerjaan. Konsultasikan kebutuhan Anda untuk mendapatkan penawaran yang relevan." },
     testimonials: { eyebrow: "Testimoni", title: "Cerita dari klien.", description: "Testimoni klien belum tersedia untuk dipublikasikan. Bagian ini akan diperbarui setelah ulasan terverifikasi siap ditampilkan." },
-    faq: { eyebrow: "FAQ", title: "Tentang website, SEO, dan biaya jasa.", description: "Masih ada pertanyaan? Diskusikan langsung dengan Dimaloka melalui WhatsApp." },
+    faq: { eyebrow: "FAQ", title: "Tentang website, SEO, dan biaya jasa.", description: "Masih ada pertanyaan? Diskusikan langsung dengan Dimaloka melalui WhatsApp.", items: faqs },
     insights: { eyebrow: "Wawasan", title: "Catatan digital untuk UMKM." },
     consultation: { eyebrow: "Konsultasi gratis", title: "Apa yang ingin Anda perbaiki dari bisnis Anda?", description: "Ceritakan kebutuhan website, SEO, atau pemasaran Anda. Kami bantu menentukan titik awal—tanpa harus memilih paket terlebih dahulu.", direct: "Lebih nyaman chat langsung?" },
   },
