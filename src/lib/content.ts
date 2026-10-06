@@ -60,9 +60,9 @@ export function applyContent(overrides: ContentOverrides | null | undefined) {
     const over = data[key];
     if (isObj(over)) deepMerge(section.target, over);
   }
-  const productOver = isObj(data.products) ? (data.products as Record<string, ProductOverride>) : {};
+  const productOver = isObj(data["products"]) ? (data["products"] as Record<string, ProductOverride>) : {};
   products.splice(0, products.length, ...pristine.products.map((p) => ({ ...structuredClone(p), ...(productOver[p.slug] ?? {}) })));
-  const addonOver = isObj(data.addons) ? (data.addons as Record<string, AddonOverride>) : {};
+  const addonOver = isObj(data["addons"]) ? (data["addons"] as Record<string, AddonOverride>) : {};
   const mutableAddons = addons as unknown as typeof pristine.addons;
   mutableAddons.splice(0, mutableAddons.length, ...pristine.addons.map((a) => ({ ...a, ...(addonOver[a.slug] ?? {}) })));
 }

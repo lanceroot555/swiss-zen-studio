@@ -28,7 +28,7 @@ function PackagesPage() {
     const addonData: Record<string, AddonOverride> = Object.fromEntries(extra.map((a) => [a.slug, { name: a.name, harga: a.harga }]));
     const { error } = await supabase.from("site_content").upsert([{ key: "products", data: productData as never }, { key: "addons", data: addonData as never }]);
     setBusy(false);
-    if (error) return toast.error("Paket belum tersimpan.");
+    if (error) return void toast.error("Paket belum tersimpan.");
     toast.success("Paket dan harga tersimpan.");
     await router.invalidate();
   }

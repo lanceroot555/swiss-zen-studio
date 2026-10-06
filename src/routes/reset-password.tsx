@@ -30,7 +30,7 @@ function ResetPassword() {
     setBusy(true);
     const { error } = await supabase.auth.updateUser({ password });
     setBusy(false);
-    if (error) return toast.error("Kata sandi belum dapat diperbarui. Minta tautan baru.");
+    if (error) return void toast.error("Kata sandi belum dapat diperbarui. Minta tautan baru.");
     toast.success("Kata sandi diperbarui.");
     navigate({ to: "/admin" });
   }

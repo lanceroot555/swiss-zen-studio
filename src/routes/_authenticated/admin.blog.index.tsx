@@ -17,7 +17,7 @@ function BlogAdmin() {
   async function remove(id: string, title: string) {
     if (!confirm(`Hapus artikel "${title}"?`)) return;
     const { error } = await supabase.from("blog_posts").delete().eq("id", id);
-    if (error) return toast.error("Artikel belum terhapus.");
+    if (error) return void toast.error("Artikel belum terhapus.");
     toast.success("Artikel dihapus.");
     qc.invalidateQueries({ queryKey: ["admin-posts"] });
   }

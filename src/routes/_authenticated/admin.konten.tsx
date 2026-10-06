@@ -22,16 +22,16 @@ function ContentPage() {
   async function save() {
     setBusy(true);
     const { data: auth } = await supabase.auth.getUser();
-    const { error } = await supabase.from("site_content").upsert({ key, data: draft as never, updated_by: auth.user?.id });
+    const { error } = await supabase.from("site_content").upsert({ key, data: draft as never, updated_by: auth.user?.id ?? null });
     setBusy(false);
-    if (error) return toast.error("Konten belum tersimpan.");
+    if (error) return void toast.error("Konten belum tersimpan.");
     toast.success("Konten tersimpan dan tampil di website.");
     await router.invalidate();
   }
   async function reset() {
     if (!confirm("Kembalikan bagian ini ke isi awal?")) return;
     const { error } = await supabase.from("site_content").delete().eq("key", key);
-    if (error) return toast.error("Gagal mengembalikan isi.");
+    if (error) return void toast.error("Gagal mengembalikan isi.");
     setDraft(defaultSection(key));
     toast.success("Isi awal dipulihkan.");
     await router.invalidate();

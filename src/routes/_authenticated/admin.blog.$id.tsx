@@ -41,15 +41,15 @@ function Editor() {
   const score = Math.round((checks.filter((c) => c.ok).length / checks.length) * 100);
 
   async function save(status: "draft" | "published") {
-    if (!post.title.trim() || !post.slug.trim()) return toast.error("Judul dan slug wajib diisi.");
+    if (!post.title.trim() || !post.slug.trim()) return void toast.error("Judul dan slug wajib diisi.");
     setBusy(true);
     const { data: auth } = await supabase.auth.getUser();
     const payload = { ...post, status, cover_image_url: post.cover_image_url || null, published_at: status === "published" ? post.published_at ?? new Date().toISOString() : post.published_at };
     const res = isNew
-      ? await supabase.from("blog_posts").insert({ ...payload, author_id: auth.user?.id }).select("id").single()
+      ? await supabase.from("blog_posts").insert({ ...payload, author_id: auth.user?.id ?? null }).select("id").single()
       : await supabase.from("blog_posts").update(payload).eq("id", id).select("id").single();
     setBusy(false);
-    if (res.error) return toast.error(res.error.code === "23505" ? "Slug sudah dipakai artikel lain." : "Artikel belum tersimpan.");
+    if (res.error) return void toast.error(res.error.code === "23505" ? "Slug sudah dipakai artikel lain." : "Artikel belum tersimpan.");
     set({ status, published_at: payload.published_at });
     toast.success(status === "published" ? "Artikel diterbitkan." : "Draf tersimpan.");
     qc.invalidateQueries({ queryKey: ["admin-posts"] });
