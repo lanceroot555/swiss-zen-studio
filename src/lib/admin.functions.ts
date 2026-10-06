@@ -3,6 +3,13 @@ import { z } from "zod";
 import { requireSupabaseAuth } from "@/integrations/supabase/auth-middleware";
 
 // Only this address may claim the first Administrator account, and only while no Administrator exists.
+function authError(error: { message?: string } | null, fallback: string) {
+  const m = error?.message?.toLowerCase() ?? "";
+  if (m.includes("weak") || m.includes("guess") || m.includes("password")) return "Kata sandi terlalu umum atau mudah ditebak. Gunakan kombinasi huruf besar, huruf kecil, angka, dan simbol (minimal 8 karakter).";
+  if (m.includes("already") || m.includes("registered") || m.includes("exists")) return "Email ini sudah terdaftar.";
+  return fallback;
+}
+
 const BOOTSTRAP_ADMIN_EMAIL = "adhityabudi@gmail.com";
 const roleSchema = z.enum(["administrator", "editor"]);
 
@@ -19,7 +26,7 @@ export const bootstrapAdmin = createServerFn({ method: "POST" })
     const { count } = await supabaseAdmin.from("user_roles").select("id", { count: "exact", head: true }).eq("role", "administrator");
     if ((count ?? 0) > 0) throw new Error("Administrator sudah dibuat. Silakan masuk.");
     const { data: created, error } = await supabaseAdmin.auth.admin.createUser({ email: data.email, password: data.password, email_confirm: true, user_metadata: { display_name: "Administrator" } });
-    if (error || !created.user) throw new Error("Akun belum dapat dibuat. Mungkin email sudah terdaftar.");
+    if (error || !created.user) throw new Error(authError(error, "Akun belum dapat dibuat. Silakan coba lagi."));
     const { error: roleError } = await supabaseAdmin.from("user_roles").insert({ user_id: created.user.id, role: "administrator" });
     if (roleError) throw new Error("Peran belum dapat disimpan.");
     return { ok: true };
@@ -45,7 +52,7 @@ export const createUser = createServerFn({ method: "POST" })
     await assertAdmin(context);
     const { supabaseAdmin } = await import("@/integrations/supabase/client.server");
     const { data: created, error } = await supabaseAdmin.auth.admin.createUser({ email: data.email, password: data.password, email_confirm: true, user_metadata: { display_name: data.displayName } });
-    if (error || !created.user) throw new Error("Pengguna belum dapat dibuat. Mungkin email sudah terdaftar.");
+    if (error || !created.user) throw new Error(authError(error, "Pengguna belum dapat dibuat. Silakan coba lagi."));
     await supabaseAdmin.from("profiles").update({ display_name: data.displayName }).eq("id", created.user.id);
     const { error: roleError } = await supabaseAdmin.from("user_roles").insert({ user_id: created.user.id, role: data.role });
     if (roleError) throw new Error("Peran belum dapat disimpan.");
