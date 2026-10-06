@@ -1,4 +1,4 @@
-# Penyempurnaan Dimaloka
-- [x] Terapkan editorial klasik dengan garis tipis dan ukuran font proporsional.
-- [x] Perkuat copywriting SEO natural dan metadata di konfigurasi pusat.
-- [x] Periksa tampilan, navigasi, dan tautan WhatsApp.
+# Tampilan Dimaloka ala Etinion
+- [ ] Terapkan pilihan Layanan terstruktur dengan pembuka gelap, aksen merah, Sora dan Manrope.
+- [ ] Pertahankan copy SEO, logo asli, dan konsultasi tanpa klaim rekaan.
+- [ ] Periksa tampilan, navigasi, FAQ, dan tautan WhatsApp.
