@@ -11,3 +11,5 @@
 
 - Keep all public-facing Dimaloka copy, contact details, pricing placeholders, and analytics IDs in one site configuration module so future content updates stay centralized.
 - Submit consultation requests through a validated TanStack server function so browser input never directly controls email delivery.
+
+- Keep editorial spacing in the shared site-section utility and apply font/color roles through global semantic tokens; this preserves consistent hierarchy across content pages.
