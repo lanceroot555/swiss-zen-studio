@@ -3,7 +3,7 @@ import { navigationConfig } from "@/lib/site-config";
 import type { ReactNode } from "react";
 const staticPaths = ["/", "/layanan", "/hubungi-kami", "/portofolio", "/toko", "/blog", "/kebijakan-privasi", "/toko/cart", "/toko/checkout"] as const;
 function isStaticPath(path: string): path is typeof staticPaths[number] { return staticPaths.some(p => p === path); }
-export function MenuLink({ href, children, onClick, className }: { href: string; children: ReactNode; onClick?: () => void; className?: string }) {
+export function MenuLink({ href, children, onClick, className }: { href: string; children: ReactNode; onClick?: (() => void) | undefined; className?: string | undefined }) {
   if (isStaticPath(href)) return <Link to={href} onClick={onClick} className={className}>{children}</Link>;
   if (/^\/layanan\/[^/]+$/.test(href)) return <Link to="/layanan/$slug" params={{ slug: href.slice(9) }} onClick={onClick} className={className}>{children}</Link>;
   if (/^\/toko\/p\/[^/]+$/.test(href)) return <Link to="/toko/p/$slug" params={{ slug: href.slice(8) }} onClick={onClick} className={className}>{children}</Link>;

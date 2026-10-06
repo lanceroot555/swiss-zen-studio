@@ -2,9 +2,11 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { ArrowLeft } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { pageCopy } from "@/lib/site-config";
+import { pageSchema } from "@/lib/seo";
 
 export const Route = createFileRoute("/kebijakan-privasi")({
   head: () => ({
+    scripts: pageSchema("/kebijakan-privasi"),
     meta: [
       { title: pageCopy.seo.privacy.title },
       { name: "description", content: pageCopy.seo.privacy.description },

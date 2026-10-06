@@ -6,7 +6,7 @@ import { Switch } from "@/components/ui/switch";
 
 const LOCKED = new Set(["location", "image", "key", "slug"]);
 const LABELS: Record<string, string> = {
-  title: "Judul", description: "Deskripsi", eyebrow: "Label kecil", text: "Teks", name: "Nama", label: "Label", items: "Daftar", seo: "SEO",
+  title: "Judul", description: "Deskripsi", eyebrow: "Label kecil", text: "Teks", name: "Nama", label: "Label", items: "Daftar", seo: "SEO", intro: "Penjelasan layanan", introTitle: "Judul penjelasan", audiences: "Untuk siapa", deliverables: "Cakupan pekerjaan", process: "Proses kerja", copy: "Judul bagian & tombol", publicEmail: "Email publik", address: "Alamat", mapsUrl: "Tautan Google Maps",
   hero: "Bagian pembuka", cta: "Tombol", sections: "Bagian", principles: "Prinsip", steps: "Langkah kerja", plans: "Paket", insights: "Wawasan",
   form: "Formulir", footer: "Footer", blog: "Blog", privacy: "Privasi", faq: "FAQ", question: "Pertanyaan", answer: "Jawaban", navigation: "Menu",
   paragraphs: "Paragraf", values: "Nilai", features: "Fitur", concepts: "Konsep", category: "Kategori", errors: "Pesan kesalahan", fields: "Kolom formulir",

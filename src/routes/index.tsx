@@ -26,6 +26,7 @@ import { ServiceShowcase } from "@/components/service-showcase";
 import websiteShowcase from "@/assets/website-showcase.jpg";
 import { trackEvent } from "@/lib/analytics";
 import { submitContact } from "@/lib/contact.functions";
+import { pageSchema } from "@/lib/seo";
 import { faqs, pageCopy, services, siteConfig, whatsappUrl, type WhatsAppLocation } from "@/lib/site-config";
 
 const serviceIcons = [Globe2, Search, Target, ShoppingBag, BarChart3, Bot];
@@ -48,10 +49,10 @@ export const Route = createFileRoute("/")({
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
     ],
-    scripts: [
-      { type: "application/ld+json", children: JSON.stringify({ "@context": "https://schema.org", "@type": "Organization", name: siteConfig.name, description: siteConfig.description, telephone: `+${siteConfig.phoneInternational}` }) },
-      { type: "application/ld+json", children: JSON.stringify(faqSchema) },
-    ],
+    scripts: pageSchema("/", [
+      { "@context": "https://schema.org", "@type": "Organization", name: siteConfig.name, description: siteConfig.description, telephone: `+${siteConfig.phoneInternational}` },
+      { ...faqSchema, mainEntity: faqs.map(item => ({ "@type": "Question", name: item.question, acceptedAnswer: { "@type": "Answer", text: item.answer } })) },
+    ]),
   }),
   component: HomePage,
 });
