@@ -30,7 +30,6 @@ import { pageSchema } from "@/lib/seo";
 import { pageCopy, services, siteConfig, whatsappUrl, type WhatsAppLocation } from "@/lib/site-config";
 
 const serviceIcons = [Globe2, Search, Target, ShoppingBag, BarChart3, Bot];
-const navItems = pageCopy.navigation;
 
 const faqSchema = {
   "@context": "https://schema.org",
