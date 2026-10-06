@@ -1,5 +1,6 @@
 import { BarChart3, Globe2, Search, ShoppingBag, Target, Bot } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
+import { techStack } from "@/lib/tech-stack";
 
 /** Ikhtisar kapabilitas & teknologi yang dipakai Dimaloka.
  *
@@ -7,12 +8,6 @@ import type { LucideIcon } from "lucide-react";
  *  deretan teknologi) dengan sudut pandang Dimaloka: pendekatan growth,
  *  bukan sekadar produksi website.
  */
-
-export interface StackItem {
-  name: string;
-  desc: string;
-  icon: LucideIcon;
-}
 
 export const capabilities: { icon: LucideIcon; title: string; text: string }[] = [
   { icon: Globe2, title: "Website & Landing Page", text: "Struktur halaman dan alur inquiry yang jelas." },
@@ -23,11 +18,6 @@ export const capabilities: { icon: LucideIcon; title: string; text: string }[] =
   { icon: Bot, title: "AI Automation", text: "Otomasi konten dan alur pemasaran berulang." },
 ];
 
-export const techStack: StackItem[] = [
-  { name: "Next.js", desc: "Framework React", icon: Globe2 },
-  { name: "PHP", desc: "Backend klasik", icon: Target },
-  { name: "WordPress", desc: "CMS populer", icon: ShoppingBag },
-  { name: "PostgreSQL", desc: "Basis data", icon: BarChart3 },
-  { name: "MySQL", desc: "Basis data", icon: Search },
-  { name: "Node.js", desc: "Server runtime", icon: Bot },
-];
+export { techStack };
+export type { TechItem } from "@/lib/tech-stack";
+
