@@ -5,7 +5,10 @@ const indonesianPhone = /^(?:\+62|62|0)8[1-9][0-9]{6,11}$/;
 
 export const contactSchema = z.object({
   name: z.string().trim().min(2, "Nama minimal 2 karakter.").max(80),
-  phone: z.string().trim().replace(/[-\s()]/g, "").regex(indonesianPhone, "Masukkan nomor WhatsApp Indonesia yang valid."),
+  phone: z.preprocess(
+    (value) => typeof value === "string" ? value.trim().replace(/[-\s()]/g, "") : value,
+    z.string().regex(indonesianPhone, "Masukkan nomor WhatsApp Indonesia yang valid."),
+  ),
   need: z.enum(["Website", "SEO", "Ads", "Marketplace", "Lainnya"]),
   message: z.string().trim().max(1000).optional().default(""),
   company: z.string().max(0).optional().default(""),
