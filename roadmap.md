@@ -8,5 +8,6 @@
 - [ ] Bangun katalog, detail paket, add-on, keranjang tersimpan, checkout, dan halaman konfirmasi WhatsApp.
 - [ ] Simpan order tervalidasi dengan snapshot paket dan total terpisah.
 - [ ] Tambahkan metadata SEO dan event analitik toko.
-- [ ] Aktifkan livechat setelah identitas widget tersedia; notifikasi email setelah domain pengirim tersedia.
+- [ ] Gunakan WhatsApp saja untuk chat dan tambahkan pembatasan order sederhana sesuai pilihan pengguna.
+- [ ] Notifikasi email setelah domain pengirim tersedia.
 - [ ] Uji keranjang, validasi, order WhatsApp, penyimpanan, dan tampilan layar kecil.
