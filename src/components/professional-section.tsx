@@ -1,4 +1,4 @@
-import illustration from "@/assets/profesional-illustration.svg";
+import illustration from "@/assets/profesional-illustration.png";
 import { techStack } from "@/lib/capabilities";
 import { Check } from "lucide-react";
 
@@ -17,11 +17,11 @@ export function ProfessionalSection() {
           <div aria-hidden="true" className="absolute inset-0 -z-10 scale-90 rounded-full bg-primary/15 blur-3xl" />
           <img
             src={illustration}
-            width={640}
-            height={560}
-            alt="Ilustrasi alur kerja digital Dimaloka: website, pencarian, iklan, dan data yang saling terhubung"
+            width={1536}
+            height={1024}
+            alt="Ilustrasi jasa pembuatan website modern Dimaloka"
             loading="lazy"
-            className="w-full rounded-2xl"
+            className="w-full rounded-2xl object-cover"
           />
         </figure>
 
