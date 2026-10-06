@@ -1,0 +1,11 @@
+import { createFileRoute, Link } from '@tanstack/react-router';
+import { useEffect,useState } from 'react';
+import { Check, MessageCircle } from 'lucide-react';
+import { Button } from '@/components/ui/button';
+import { OrderSummary } from '@/components/shop/cart-ui';
+import { shopCopy as c, siteConfig } from '@/lib/site-config';
+import { pageHead } from '@/lib/seo';
+import type { OrderLine } from '@/lib/shop';
+interface Confirmation {number:string;url:string;items:OrderLine[]}
+export const Route=createFileRoute('/toko/terima-kasih')({head:()=>({...pageHead(c.thanksTitle,c.thanksText,'/toko/terima-kasih'),meta:[...pageHead(c.thanksTitle,c.thanksText,'/toko/terima-kasih').meta,{name:'robots',content:'noindex'}]}),component:Thanks});
+function Thanks(){const [order,setOrder]=useState<Confirmation|null>(null);const [ready,setReady]=useState(false);useEffect(()=>{try{const value=JSON.parse(sessionStorage.getItem('dimaloka-last-order')??'null');if(value&&/^DM-\d{8}-\d{3}$/.test(value.number)&&typeof value.url==='string'&&value.url.startsWith(`https://wa.me/${siteConfig.phoneInternational}?text=`)&&Array.isArray(value.items))setOrder(value)}catch{}setReady(true)},[]);return <main className="site-section max-w-2xl min-h-[60vh]">{!ready?<p>{c.loading}</p>:!order?<><h1 className="text-2xl font-semibold">{c.noOrder}</h1><Button asChild className="mt-6"><Link to="/toko">{c.backCatalog}</Link></Button></>:<><Check className="size-12 rounded-full bg-secondary p-3 text-primary"/><h1 className="mt-6 text-[30px] font-semibold">{c.thanksTitle}</h1><p className="mt-4 text-sm leading-7 text-muted-foreground">{c.thanksText}</p><div className="my-8 border-y border-border py-6"><p className="text-xs text-muted-foreground">{c.orderNumber}</p><p className="mt-2 text-xl font-semibold">{order.number}</p></div><div className="mb-7 space-y-3">{order.items.map(l=><p className="text-sm leading-6" key={l.slug}>{l.qty} × {l.addon?'(Add-on) ':''}{l.name}</p>)}</div><OrderSummary lines={order.items}/><div className="mt-7 flex flex-wrap gap-3"><Button asChild className="h-12"><a href={order.url} target="_blank" rel="noreferrer"><MessageCircle className="size-4"/>{c.reopen}</a></Button><Button asChild variant="outline" className="h-12"><Link to="/toko">{c.backCatalog}</Link></Button></div><p className="mt-5 text-xs text-muted-foreground">{c.received}</p></>}</main>}

@@ -12,6 +12,9 @@ import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as BlogRouteImport } from './routes/blog'
 import { Route as KebijakanPrivasiRouteImport } from './routes/kebijakan-privasi'
+import { Route as TokoIndexRouteImport } from './routes/toko.index'
+import { Route as TokoCartRouteImport } from './routes/toko.cart'
+import { Route as TokoPSlugRouteImport } from './routes/toko.p.$slug'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -28,35 +31,81 @@ const KebijakanPrivasiRoute = KebijakanPrivasiRouteImport.update({
   path: '/kebijakan-privasi',
   getParentRoute: () => rootRouteImport,
 } as any)
+const TokoIndexRoute = TokoIndexRouteImport.update({
+  id: '/toko/',
+  path: '/toko/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const TokoCartRoute = TokoCartRouteImport.update({
+  id: '/toko/cart',
+  path: '/toko/cart',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const TokoPSlugRoute = TokoPSlugRouteImport.update({
+  id: '/toko/p/$slug',
+  path: '/toko/p/$slug',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/blog': typeof BlogRoute
   '/kebijakan-privasi': typeof KebijakanPrivasiRoute
+  '/toko/cart': typeof TokoCartRoute
+  '/toko/': typeof TokoIndexRoute
+  '/toko/p/$slug': typeof TokoPSlugRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/blog': typeof BlogRoute
   '/kebijakan-privasi': typeof KebijakanPrivasiRoute
+  '/toko/cart': typeof TokoCartRoute
+  '/toko': typeof TokoIndexRoute
+  '/toko/p/$slug': typeof TokoPSlugRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/blog': typeof BlogRoute
   '/kebijakan-privasi': typeof KebijakanPrivasiRoute
+  '/toko/cart': typeof TokoCartRoute
+  '/toko/': typeof TokoIndexRoute
+  '/toko/p/$slug': typeof TokoPSlugRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/blog' | '/kebijakan-privasi'
+  fullPaths:
+    | '/'
+    | '/blog'
+    | '/kebijakan-privasi'
+    | '/toko/cart'
+    | '/toko/'
+    | '/toko/p/$slug'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/blog' | '/kebijakan-privasi'
-  id: '__root__' | '/' | '/blog' | '/kebijakan-privasi'
+  to:
+    | '/'
+    | '/blog'
+    | '/kebijakan-privasi'
+    | '/toko/cart'
+    | '/toko'
+    | '/toko/p/$slug'
+  id:
+    | '__root__'
+    | '/'
+    | '/blog'
+    | '/kebijakan-privasi'
+    | '/toko/cart'
+    | '/toko/'
+    | '/toko/p/$slug'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   BlogRoute: typeof BlogRoute
   KebijakanPrivasiRoute: typeof KebijakanPrivasiRoute
+  TokoCartRoute: typeof TokoCartRoute
+  TokoIndexRoute: typeof TokoIndexRoute
+  TokoPSlugRoute: typeof TokoPSlugRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -82,6 +131,27 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof KebijakanPrivasiRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/toko/': {
+      id: '/toko/'
+      path: '/toko'
+      fullPath: '/toko/'
+      preLoaderRoute: typeof TokoIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/toko/cart': {
+      id: '/toko/cart'
+      path: '/toko/cart'
+      fullPath: '/toko/cart'
+      preLoaderRoute: typeof TokoCartRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/toko/p/$slug': {
+      id: '/toko/p/$slug'
+      path: '/toko/p/$slug'
+      fullPath: '/toko/p/$slug'
+      preLoaderRoute: typeof TokoPSlugRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
@@ -89,6 +159,9 @@ const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   BlogRoute: BlogRoute,
   KebijakanPrivasiRoute: KebijakanPrivasiRoute,
+  TokoCartRoute: TokoCartRoute,
+  TokoIndexRoute: TokoIndexRoute,
+  TokoPSlugRoute: TokoPSlugRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
