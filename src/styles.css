@@ -175,6 +175,20 @@
   @media (min-width: 768px) { padding: 5rem 2rem; }
 }
 
+/* Small gradient accents used on colored sections (dark navy + light gray).
+   Applied as background-image so they compose with the section's background-color. */
+@utility section-glow-dark {
+  background-image:
+    radial-gradient(44rem 26rem at 88% -14%, color-mix(in oklab, var(--primary) 15%, transparent), transparent 62%),
+    radial-gradient(38rem 24rem at -8% 112%, color-mix(in oklab, oklch(0.42 0.09 262) 20%, transparent), transparent 60%);
+}
+
+@utility section-glow-light {
+  background-image:
+    radial-gradient(36rem 20rem at 100% -8%, color-mix(in oklab, var(--primary) 6%, transparent), transparent 60%),
+    radial-gradient(32rem 20rem at -6% 108%, color-mix(in oklab, oklch(0.62 0.05 258) 9%, transparent), transparent 62%);
+}
+
 @keyframes reveal-content { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: translateY(0); } }
 @keyframes hero-visual-enter { from { opacity: 0; transform: translateX(18px); } to { opacity: 1; transform: translateX(0); } }
 @keyframes hero-visual-drift { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-7px); } }
