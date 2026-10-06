@@ -8,26 +8,23 @@
 ## Menjalankan
 
 ```bash
-docker compose up -d --build
+# Stack Supabase lokal (sekali saja / saat .env berubah)
+cd supabase-local
+docker compose up -d
+
+# Aplikasi web (dari root repo)
+docker compose -f docker-compose.local.yml --env-file supabase-local/.env up -d --build
 ```
 
-Aplikasi hidup di **http://localhost:3000**
+Aplikasi: **http://localhost:3000** · DB lokal: Postgres di port 5432 (internal), API via 8000
 
-## Perintah berguna
+## Akun admin lokal
 
-```bash
-# Lihat log
-docker logs -f dimaloka-web
-
-# Restart setelah .env diubah
-docker compose up -d --restart
-
-# Stop
-docker compose down
-
-# Rebuild total (setelah ganti kode)
-docker compose up -d --build
 ```
+Email:    admin@dimaloka.local
+Password: Admin123456!
+```
+Dibuat via `supabase-local/.env` (`ENABLE_EMAIL_AUTOCONFIRM=true`) + insert manual ke `user_roles`.
 
 ## Catatan penting
 
