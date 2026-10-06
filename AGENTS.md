@@ -15,3 +15,7 @@
 - Keep editorial spacing in the shared site-section utility and apply font/color roles through global semantic tokens; this preserves consistent hierarchy across content pages.
 
 - Use bundled illustrative website imagery with explicit sample captions rather than fabricated portfolio metrics; this keeps agency visuals honest while real case studies are unavailable.
+
+- Share the site header, footer, and cart provider in the root layout so all content pages maintain one navigation and shopping state.
+- Resolve guest order catalog values in a validated server function and persist private order snapshots with rate limiting; this prevents client-controlled pricing or public order reads.
+- Store the guest cart locally and synchronize browser tabs, while keeping the last confirmation session-scoped to avoid requiring accounts.

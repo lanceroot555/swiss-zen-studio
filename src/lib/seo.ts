@@ -1,0 +1,2 @@
+import { siteConfig } from './site-config';
+export function pageHead(title:string,description:string,path:string){return {meta:[{title:`${title} — Dimaloka`},{name:'description',content:description},{property:'og:title',content:`${title} — Dimaloka`},{property:'og:description',content:description},{property:'og:type',content:'website'},{name:'twitter:card',content:'summary_large_image'}],links:[{rel:'canonical',href:siteConfig.siteUrl+path}]}}
