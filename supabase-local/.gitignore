@@ -1,0 +1,10 @@
+# Data runtime Supabase lokal — JANGAN di-commit.
+# Semua di sini dihasilkan mesin (database, storage, konfigurasi berisi secret).
+.env
+app.env
+volumes/db/data/
+volumes/db/init/
+volumes/storage/
+volumes/functions/
+volumes/snippets/
+volumes/pooler/
