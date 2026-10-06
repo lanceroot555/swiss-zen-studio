@@ -1,4 +1,4 @@
 # Penyempurnaan Dimaloka
-- [ ] Terapkan editorial klasik dengan garis tipis dan ukuran font proporsional.
-- [ ] Perkuat copywriting SEO natural dan metadata di konfigurasi pusat.
-- [ ] Periksa tampilan, navigasi, dan tautan WhatsApp.
+- [x] Terapkan editorial klasik dengan garis tipis dan ukuran font proporsional.
+- [x] Perkuat copywriting SEO natural dan metadata di konfigurasi pusat.
+- [x] Periksa tampilan, navigasi, dan tautan WhatsApp.

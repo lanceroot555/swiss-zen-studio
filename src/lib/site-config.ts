@@ -55,7 +55,7 @@ export const pageCopy = {
     blog: { title: "Blog SEO, Website & Digital Marketing — Dimaloka", description: "Wawasan Dimaloka seputar SEO, pembuatan website, dan iklan digital untuk UMKM. Artikel pertama sedang disiapkan." },
     privacy: { title: "Kebijakan Privasi Formulir Konsultasi — Dimaloka", description: "Ketahui penggunaan data formulir konsultasi Dimaloka dan cara menghubungi kami untuk meminta penghapusan data." },
   },
-  hero: { label: "Digital Growth Partner", title: "Dimaloka — jasa website dan SEO untuk UMKM.", description: "Website yang jelas, bisnis yang mudah ditemukan. Dimaloka membantu UMKM melalui pembuatan website, SEO, iklan digital, optimasi marketplace, dan AI automation—sesuai kebutuhan bisnis Anda.", trust: ["Konsultasi awal gratis", "Tanpa komitmen", "Rekomendasi sesuai kebutuhan"] },
+  hero: { label: "Digital Growth Partner", title: "Dimaloka — jasa website dan SEO untuk UMKM.", description: "Dimaloka membantu UMKM membangun website, mengoptimalkan SEO, serta mengelola iklan, marketplace, dan AI automation. Mulai dari kebutuhan bisnis Anda, bukan sekadar menambah kanal digital.", trust: ["Konsultasi awal gratis", "Tanpa komitmen", "Rekomendasi sesuai kebutuhan"] },
   cta: { whatsapp: "Konsultasi via WhatsApp", free: "Konsultasi Gratis", short: "Konsultasi", services: "Lihat layanan", discuss: "Diskusikan kebutuhan", package: "Tanya paket", blog: "Lihat blog", back: "Kembali", float: "Chat WhatsApp", floatTitle: "Chat Dimaloka via WhatsApp" },
   sections: {
     services: { eyebrow: "Layanan", title: "Jasa digital marketing, dari website hingga pencarian.", description: "Bangun fondasi digital yang tepat. Pilih layanan sesuai kebutuhan, lalu hubungkan website, pencarian, dan pemasaran dalam strategi yang jelas." },
