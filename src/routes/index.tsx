@@ -95,8 +95,8 @@ function HomePage() {
       <div className="hero-content mx-auto grid max-w-7xl items-center gap-10 px-5 py-12 md:px-8 md:py-16 lg:grid-cols-2 lg:gap-16">
         <div>
           <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-inverse-border px-3 py-1.5 text-xs font-medium text-inverse-muted"><span className="size-1.5 rounded-full bg-primary" />{pageCopy.hero.label}</div>
-          <h1 id="hero-title" className="max-w-xl text-[30px] font-bold leading-[1.25] md:text-[40px]">{pageCopy.hero.title}</h1>
-          <p className="mt-6 max-w-xl text-base leading-7 text-inverse-muted">{pageCopy.hero.description}</p>
+          <h1 id="hero-title" className="max-w-xl text-[30px] font-extrabold leading-[1.25] md:text-[40px]">{pageCopy.hero.title}</h1>
+          <p className="mt-6 max-w-xl text-base font-semibold leading-7 text-inverse-foreground/85">{pageCopy.hero.description}</p>
           <div className="mt-8 flex flex-wrap items-center gap-3"><Button asChild size="lg" className="h-12 rounded-full px-6 text-sm font-semibold shadow-none"><WaLink location="hero"><MessageCircle className="size-4" />{pageCopy.cta.whatsapp}</WaLink></Button><Button asChild variant="outline" size="lg" className="h-12 rounded-full border-inverse-border bg-transparent px-6 text-sm text-inverse-foreground shadow-none hover:bg-inverse-foreground/10 hover:text-inverse-foreground"><a href="#layanan">{pageCopy.cta.services}<ArrowDown /></a></Button></div>
           <div className="mt-8 flex flex-wrap gap-x-5 gap-y-3 border-t border-inverse-border pt-6 text-xs leading-5 text-inverse-muted">{pageCopy.hero.trust.map(text => <span key={text} className="flex items-center gap-2"><Check className="size-3.5 text-primary" />{text}</span>)}</div>
         </div>
