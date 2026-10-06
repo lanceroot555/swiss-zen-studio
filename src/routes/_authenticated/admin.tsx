@@ -1,6 +1,6 @@
 import { createFileRoute, Link, Outlet, useNavigate } from "@tanstack/react-router";
 import { useQueryClient } from "@tanstack/react-query";
-import { LayoutDashboard, FileText, Package, Newspaper, Users, LogOut, ExternalLink } from "lucide-react";
+import { LayoutDashboard, FileText, Package, Newspaper, Users, LogOut, ExternalLink, Building2 } from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
 import { useMyRoles } from "@/lib/use-roles";
 import { Button } from "@/components/ui/button";
@@ -29,6 +29,7 @@ function AdminLayout() {
     { to: "/admin", label: "Ringkasan", icon: LayoutDashboard, show: true, exact: true },
     { to: "/admin/konten", label: "Konten halaman", icon: FileText, show: isAdmin },
     { to: "/admin/paket", label: "Paket toko", icon: Package, show: isAdmin },
+    { to: "/admin/klien", label: "Logo klien", icon: Building2, show: isAdmin },
     { to: "/admin/blog", label: "Blog & SEO", icon: Newspaper, show: true },
     { to: "/admin/pengguna", label: "Pengguna", icon: Users, show: isAdmin },
   ] as const;

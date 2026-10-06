@@ -23,11 +23,13 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { ServiceShowcase } from "@/components/service-showcase";
+import { ClientMarquee } from "@/components/client-marquee";
 import heroIllustration from "@/assets/hero-illustration.png";
 import { trackEvent } from "@/lib/analytics";
 import { submitContact } from "@/lib/contact.functions";
 import { pageSchema } from "@/lib/seo";
 import { pageCopy, services, siteConfig, whatsappUrl, type WhatsAppLocation } from "@/lib/site-config";
+import { clientsCopy } from "@/lib/clients-content";
 
 const serviceIcons = [Globe2, Search, Target, ShoppingBag, BarChart3, Bot];
 
@@ -98,9 +100,11 @@ function HomePage() {
           <div className="mt-8 flex flex-wrap items-center gap-3"><Button asChild size="lg" className="h-12 rounded-full px-6 text-sm font-semibold shadow-none"><WaLink location="hero"><MessageCircle className="size-4" />{pageCopy.cta.whatsapp}</WaLink></Button><Button asChild variant="outline" size="lg" className="h-12 rounded-full border-inverse-border bg-transparent px-6 text-sm text-inverse-foreground shadow-none hover:bg-inverse-foreground/10 hover:text-inverse-foreground"><a href="#layanan">{pageCopy.cta.services}<ArrowDown /></a></Button></div>
           <div className="mt-8 flex flex-wrap gap-x-5 gap-y-3 border-t border-inverse-border pt-6 text-sm font-medium leading-6 text-inverse-foreground">{pageCopy.hero.trust.map(text => <span key={text} className="flex items-center gap-2"><Check className="size-3.5 text-primary" />{text}</span>)}</div>
         </div>
-        <figure className="hero-visual relative mx-auto w-full max-w-[560px]"><div aria-hidden="true" className="absolute inset-0 -z-10 scale-90 rounded-full bg-primary/20 blur-3xl" /><img src={heroIllustration} width={1536} height={1024} alt={pageCopy.hero.visualAlt} fetchPriority="high" className="hero-visual-image aspect-[1.5] w-full rounded-2xl object-cover" /><figcaption className="mt-4 text-center text-xs font-medium leading-5 text-inverse-foreground">{pageCopy.hero.visualCaption}</figcaption></figure>
+        <figure className="hero-visual relative mx-auto w-full max-w-[560px]"><div aria-hidden="true" className="absolute inset-0 -z-10 scale-90 rounded-full bg-primary/20 blur-3xl" /><img src={heroIllustration} width={1536} height={1024} alt={pageCopy.hero.visualAlt} fetchPriority="high" className="hero-visual-image aspect-[1.5] w-full rounded-2xl object-cover" /></figure>
       </div>
     </section>
+
+    <ClientMarquee logos={clientsCopy.logos} label={clientsCopy.label} />
 
     <ServiceShowcase />
 

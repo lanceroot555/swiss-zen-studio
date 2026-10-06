@@ -229,3 +229,13 @@
 @media (prefers-reduced-motion: reduce) {
   .service-track { scroll-behavior: auto; }
 }
+
+/* Marquee logo klien — track berjalan lalu menyambung ulang di -50%
+   (logo diduplikasi di komponen) supaya loop terlihat tanpa jeda. */
+@keyframes client-marquee {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+@media (prefers-reduced-motion: reduce) {
+  [class*="client-marquee"] { animation: none !important; }
+}
