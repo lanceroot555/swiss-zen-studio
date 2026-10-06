@@ -10,7 +10,6 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
-import { Route as BlogRouteImport } from './routes/blog'
 import { Route as KebijakanPrivasiRouteImport } from './routes/kebijakan-privasi'
 import { Route as PortofolioRouteImport } from './routes/portofolio'
 import { Route as TokoIndexRouteImport } from './routes/toko.index'
@@ -22,11 +21,6 @@ import { Route as TokoPSlugRouteImport } from './routes/toko.p.$slug'
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const BlogRoute = BlogRouteImport.update({
-  id: '/blog',
-  path: '/blog',
   getParentRoute: () => rootRouteImport,
 } as any)
 const KebijakanPrivasiRoute = KebijakanPrivasiRouteImport.update({
@@ -67,7 +61,6 @@ const TokoPSlugRoute = TokoPSlugRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
-  '/blog': typeof BlogRoute
   '/kebijakan-privasi': typeof KebijakanPrivasiRoute
   '/portofolio': typeof PortofolioRoute
   '/toko/cart': typeof TokoCartRoute
@@ -78,7 +71,6 @@ export interface FileRoutesByFullPath {
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
-  '/blog': typeof BlogRoute
   '/kebijakan-privasi': typeof KebijakanPrivasiRoute
   '/portofolio': typeof PortofolioRoute
   '/toko/cart': typeof TokoCartRoute
@@ -90,7 +82,6 @@ export interface FileRoutesByTo {
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
-  '/blog': typeof BlogRoute
   '/kebijakan-privasi': typeof KebijakanPrivasiRoute
   '/portofolio': typeof PortofolioRoute
   '/toko/cart': typeof TokoCartRoute
@@ -103,7 +94,6 @@ export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
-    | '/blog'
     | '/kebijakan-privasi'
     | '/portofolio'
     | '/toko/cart'
@@ -114,7 +104,6 @@ export interface FileRouteTypes {
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
-    | '/blog'
     | '/kebijakan-privasi'
     | '/portofolio'
     | '/toko/cart'
@@ -125,7 +114,6 @@ export interface FileRouteTypes {
   id:
     | '__root__'
     | '/'
-    | '/blog'
     | '/kebijakan-privasi'
     | '/portofolio'
     | '/toko/cart'
@@ -137,7 +125,6 @@ export interface FileRouteTypes {
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
-  BlogRoute: typeof BlogRoute
   KebijakanPrivasiRoute: typeof KebijakanPrivasiRoute
   PortofolioRoute: typeof PortofolioRoute
   TokoCartRoute: typeof TokoCartRoute
@@ -154,13 +141,6 @@ declare module '@tanstack/react-router' {
       path: '/'
       fullPath: '/'
       preLoaderRoute: typeof IndexRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/blog': {
-      id: '/blog'
-      path: '/blog'
-      fullPath: '/blog'
-      preLoaderRoute: typeof BlogRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/kebijakan-privasi': {
@@ -217,7 +197,6 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
-  BlogRoute: BlogRoute,
   KebijakanPrivasiRoute: KebijakanPrivasiRoute,
   PortofolioRoute: PortofolioRoute,
   TokoCartRoute: TokoCartRoute,
