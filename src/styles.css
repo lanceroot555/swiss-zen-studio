@@ -179,14 +179,14 @@
    Applied as background-image so they compose with the section's background-color. */
 @utility section-glow-dark {
   background-image:
-    radial-gradient(44rem 26rem at 88% -14%, color-mix(in oklab, var(--primary) 15%, transparent), transparent 62%),
-    radial-gradient(38rem 24rem at -8% 112%, color-mix(in oklab, oklch(0.42 0.09 262) 20%, transparent), transparent 60%);
+    radial-gradient(26rem 15rem at 50% 32%, color-mix(in oklab, var(--primary) 13%, transparent), transparent 58%),
+    radial-gradient(24rem 14rem at 50% 74%, color-mix(in oklab, oklch(0.42 0.09 262) 18%, transparent), transparent 56%);
 }
 
 @utility section-glow-light {
   background-image:
-    radial-gradient(36rem 20rem at 100% -8%, color-mix(in oklab, var(--primary) 6%, transparent), transparent 60%),
-    radial-gradient(32rem 20rem at -6% 108%, color-mix(in oklab, oklch(0.62 0.05 258) 9%, transparent), transparent 62%);
+    radial-gradient(24rem 13rem at 50% 30%, color-mix(in oklab, var(--primary) 5%, transparent), transparent 56%),
+    radial-gradient(22rem 13rem at 50% 76%, color-mix(in oklab, oklch(0.62 0.05 258) 8%, transparent), transparent 58%);
 }
 
 @keyframes reveal-content { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: translateY(0); } }
