@@ -14,13 +14,84 @@ export type Database = {
   }
   public: {
     Tables: {
-      [_ in never]: never
+      order_attempts: {
+        Row: {
+          attempts: number
+          source_hash: string
+          window_started_at: string
+        }
+        Insert: {
+          attempts?: number
+          source_hash: string
+          window_started_at?: string
+        }
+        Update: {
+          attempts?: number
+          source_hash?: string
+          window_started_at?: string
+        }
+        Relationships: []
+      }
+      orders: {
+        Row: {
+          bisnis: string
+          catatan: string
+          created_at: string
+          email: string
+          id: string
+          items: Json
+          nama: string
+          order_number: string
+          request_id: string
+          status: string
+          timeline: string
+          total_bulanan: number | null
+          total_sekali: number | null
+          updated_at: string
+          wa: string
+        }
+        Insert: {
+          bisnis: string
+          catatan?: string
+          created_at?: string
+          email: string
+          id?: string
+          items: Json
+          nama: string
+          order_number: string
+          request_id: string
+          status?: string
+          timeline: string
+          total_bulanan?: number | null
+          total_sekali?: number | null
+          updated_at?: string
+          wa: string
+        }
+        Update: {
+          bisnis?: string
+          catatan?: string
+          created_at?: string
+          email?: string
+          id?: string
+          items?: Json
+          nama?: string
+          order_number?: string
+          request_id?: string
+          status?: string
+          timeline?: string
+          total_bulanan?: number | null
+          total_sekali?: number | null
+          updated_at?: string
+          wa?: string
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
     }
     Functions: {
-      [_ in never]: never
+      claim_order_attempt: { Args: { p_source_hash: string }; Returns: boolean }
     }
     Enums: {
       [_ in never]: never
