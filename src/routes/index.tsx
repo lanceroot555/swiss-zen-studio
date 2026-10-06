@@ -24,6 +24,7 @@ import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { ServiceShowcase } from "@/components/service-showcase";
 import { ClientMarquee } from "@/components/client-marquee";
+import { ProfessionalSection } from "@/components/professional-section";
 import heroIllustration from "@/assets/hero-illustration.png";
 import { trackEvent } from "@/lib/analytics";
 import { submitContact } from "@/lib/contact.functions";
@@ -105,6 +106,8 @@ function HomePage() {
     </section>
 
     <ClientMarquee logos={clientsCopy.logos} label={clientsCopy.label} />
+
+    <ProfessionalSection />
 
     <ServiceShowcase />
 
