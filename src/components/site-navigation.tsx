@@ -100,7 +100,7 @@ function Submenu({ label, children, onNavigate }: { label: string; children: { h
             href={c.href}
             onClick={() => { setOpen(false); onNavigate?.(); }}
             linkRef={el => { itemRefs.current[j] = el; }}
-            className="block rounded-sm py-2.5 text-sm text-inverse-muted hover:text-inverse-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
+            className="block rounded-sm px-3 py-2.5 text-sm font-medium text-inverse-foreground/90 transition-colors hover:text-inverse-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
           >
             {c.label}
           </MenuLink>
@@ -111,8 +111,10 @@ function Submenu({ label, children, onNavigate }: { label: string; children: { h
 }
 
 export function SiteNavigation({ onNavigate, footer = false }: { onNavigate?: () => void; footer?: boolean }) {
-  return <>{navigationConfig.items.filter(i => i.visible).map((item, i) => <div key={`${item.href}-${i}`} className={footer ? "" : "relative"}>
-    <MenuLink href={item.href} onClick={onNavigate} className="block rounded-sm py-2 text-sm transition-colors hover:text-inverse-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary">{item.label}</MenuLink>
+  return <>{navigationConfig.items.filter(i => i.visible).map((item, i) => <div key={`${item.href}-${i}`} className={footer ? "" : "relative flex items-center gap-1"}>
+    <MenuLink href={item.href} onClick={onNavigate} className={footer
+      ? "block rounded-sm py-1.5 text-sm font-semibold text-inverse-foreground transition-colors hover:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
+      : "block rounded-sm px-1 py-2.5 text-sm font-semibold text-inverse-foreground transition-colors hover:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-inverse"}>{item.label}</MenuLink>
     {!footer && item.children.some(c => c.visible) && <Submenu label={item.label} children={item.children} onNavigate={onNavigate} />}
   </div>)}</>;
 }
