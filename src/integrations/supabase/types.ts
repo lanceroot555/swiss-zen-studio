@@ -31,6 +31,7 @@ export type Database = {
           published_at: string | null
           slug: string
           status: string
+          structured_schema: string
           tags: string[]
           title: string
           updated_at: string
@@ -51,6 +52,7 @@ export type Database = {
           published_at?: string | null
           slug: string
           status?: string
+          structured_schema?: string
           tags?: string[]
           title: string
           updated_at?: string
@@ -71,6 +73,7 @@ export type Database = {
           published_at?: string | null
           slug?: string
           status?: string
+          structured_schema?: string
           tags?: string[]
           title?: string
           updated_at?: string
