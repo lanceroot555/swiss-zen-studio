@@ -172,3 +172,41 @@ export const blogCopy = {
   ctaTitle: "Butuh bantuan menerapkannya di bisnis Anda?",
   ctaText: "Diskusikan kebutuhan website, SEO, atau iklan Anda bersama Dimaloka. Konsultasi awal gratis.",
 };
+
+export interface MenuItem { label: string; href: string; visible: boolean; children: { label: string; href: string; visible: boolean }[] }
+export interface ServicePage { slug: string; title: string; seoTitle: string; seoDescription: string; description: string; image: string; introTitle: string; intro: string; audiences: string[]; deliverables: string[]; process: { title: string; text: string }[]; faq: { question: string; answer: string }[]; ctaTitle: string; ctaText: string }
+const serviceSlugs = ['pembuatan-website', 'seo-google-maps', 'google-meta-ads', 'optimasi-marketplace', 'konten-copywriting', 'ai-automation'];
+const scopes = [
+ ['Company profile, landing page, atau toko online sesuai kebutuhan', 'Struktur halaman, penawaran, dan tombol kontak', 'Tampilan ponsel dan fondasi SEO teknis', 'Pengelolaan konten sesuai ruang lingkup'],
+ ['Tinjauan teknis dan struktur konten website', 'Optimasi informasi profil bisnis Google sesuai kelayakan', 'Rencana konten dan pencarian lokal', 'Evaluasi progres dan prioritas perbaikan'],
+ ['Perencanaan audiens, kata kunci, dan tujuan kampanye', 'Setup serta pengelolaan Google atau Meta Ads', 'Peninjauan materi dan halaman tujuan', 'Evaluasi performa; anggaran iklan terpisah'],
+ ['Tinjauan katalog dan informasi produk', 'Optimasi judul, deskripsi, serta visual produk', 'Peninjauan tampilan dan alur toko', 'Evaluasi pengelolaan sesuai marketplace'],
+ ['Perencanaan topik berdasarkan kebutuhan pelanggan', 'Copywriting halaman layanan dan produk', 'Artikel serta penyuntingan sesuai lingkup', 'Optimasi struktur judul dan tautan internal'],
+ ['Pemetaan pekerjaan berulang dalam bisnis', 'Pemilihan alur dan integrasi yang sesuai', 'Penerapan otomasi sesuai ruang lingkup', 'Pengujian hasil dengan pengawasan manusia'],
+];
+const audiences = [
+ ['Bisnis yang belum memiliki website', 'UMKM yang membutuhkan profil layanan yang jelas', 'Bisnis yang ingin merapikan katalog dan alur pemesanan'],
+ ['Bisnis dengan website yang perlu ditinjau', 'Usaha lokal yang melayani area tertentu', 'Tim yang ingin membangun konten pencarian secara bertahap'],
+ ['Bisnis dengan penawaran dan anggaran iklan yang siap', 'Tim yang membutuhkan pengelolaan kampanye', 'Usaha yang ingin mengevaluasi iklan dan halaman tujuan'],
+ ['Toko dengan katalog yang perlu dirapikan', 'Bisnis yang berjualan melalui marketplace', 'Tim yang membutuhkan prioritas pengelolaan toko'],
+ ['Bisnis dengan layanan yang perlu dijelaskan', 'Tim yang membutuhkan artikel untuk pelanggan', 'Usaha yang ingin merapikan penawaran website'],
+ ['Tim dengan pekerjaan berulang yang jelas', 'Bisnis yang ingin menghubungkan alur konten', 'Usaha yang siap meninjau kualitas keluaran otomasi'],
+];
+export const servicePages: { items: ServicePage[]; copy: { scopeTitle: string; audienceTitle: string; processTitle: string; faqTitle: string; sample: string; consult: string; packages: string; note: string } } = {
+ items: services.map((s, i) => ({ slug: serviceSlugs[i] ?? s.key, title: s.title, seoTitle: `${s.title} untuk UMKM dan Bisnis`, seoDescription: `${s.description} Diskusikan kebutuhan dan ruang lingkup bersama Dimaloka.`, description: s.description, image: i === 3 ? 'commerce' : i === 0 || i === 4 ? 'website' : 'marketing', introTitle: i === 0 ? 'Website yang mengikuti cara bisnis Anda bekerja.' : `Pendekatan terarah untuk ${s.title.toLowerCase()}.`, intro: `${s.description} Kami mulai dari kondisi awal bisnis Anda, menyusun prioritas, lalu menyepakati pekerjaan yang relevan sebelum pelaksanaan.`, audiences: audiences[i] ?? [], deliverables: scopes[i] ?? [], process: pageCopy.steps.map(step => ({...step})), faq: [{ question: 'Bagaimana ruang lingkup dan biaya ditentukan?', answer: 'Kebutuhan, kondisi awal, dan cakupan pekerjaan dibahas melalui konsultasi. Harga serta jadwal dijelaskan dalam penawaran sebelum pekerjaan dimulai.' }, { question: i === 1 ? 'Apakah ada jaminan peringkat pertama Google?' : 'Apakah hasil dapat dijamin?', answer: i === 1 ? 'Tidak. Peringkat dipengaruhi persaingan, kualitas website, dan sistem Google. Fokus pekerjaan adalah perbaikan yang relevan serta evaluasi progres.' : 'Hasil bergantung pada kondisi bisnis, materi, dan faktor di luar pengerjaan. Dimaloka tidak menjanjikan angka hasil yang belum dapat dibuktikan.' }, { question: 'Apa yang perlu disiapkan sebelum konsultasi?', answer: 'Siapkan penjelasan bisnis, target pelanggan, kanal yang sudah digunakan, dan kendala utama. Jika ada, sertakan alamat website atau toko Anda.' }], ctaTitle: `Diskusikan kebutuhan ${s.title.toLowerCase()} Anda.`, ctaText: 'Mulai dari konsultasi awal gratis. Ruang lingkup, jadwal, serta penawaran disepakati sebelum pekerjaan dimulai.' })),
+ copy: { scopeTitle: 'Cakupan pekerjaan', audienceTitle: 'Apakah layanan ini sesuai untuk Anda?', processTitle: 'Dari kebutuhan ke rencana kerja', faqTitle: 'Pertanyaan tentang layanan', sample: 'Ilustrasi layanan · bukan proyek klien', consult: 'Konsultasi gratis', packages: 'Lihat pilihan paket', note: 'Cakupan ini merupakan acuan awal. Rincian final mengikuti kebutuhan dan penawaran yang disepakati.' },
+};
+export const navigationConfig: { items: MenuItem[] } = { items: [
+ { label: 'Home', href: '/', visible: true, children: [] },
+ { label: 'Layanan', href: '/layanan', visible: true, children: servicePages.items.map(s => ({ label: s.title, href: `/layanan/${s.slug}`, visible: true })) },
+ { label: 'Portofolio', href: '/portofolio', visible: true, children: [] },
+ { label: 'Paket & Harga', href: '/toko', visible: true, children: [] },
+ { label: 'Blog', href: '/blog', visible: true, children: [] },
+ { label: 'Hubungi Kami', href: '/hubungi-kami', visible: true, children: [] },
+] };
+export const contactPageCopy = { seoTitle: 'Hubungi Dimaloka — Konsultasi Website & Pemasaran Digital', seoDescription: 'Hubungi Dimaloka untuk konsultasi website, SEO, dan pemasaran digital. Ceritakan kebutuhan bisnis Anda dan lanjutkan diskusi melalui WhatsApp.', eyebrow: 'HUBUNGI KAMI', title: 'Hubungi Dimaloka', subtitle: 'Mari diskusikan kebutuhan bisnis Anda.', description: 'Dari website hingga pemasaran digital, mulai dengan percakapan tentang tujuan dan kendala bisnis Anda. Kami membantu menyusun prioritas yang sesuai.', formTitle: 'Form konsultasi', formText: 'Kami siap mendengar kebutuhan Anda.', contactTitle: 'Dimaloka', contactText: 'Hubungi kami melalui WhatsApp untuk mendiskusikan layanan dan langkah berikutnya.', phoneLabel: 'Nomor WhatsApp', direct: 'Chat langsung', submit: 'Lanjutkan ke WhatsApp', privacy: 'Informasi Anda digunakan untuk menanggapi kebutuhan konsultasi.', emailLabel: 'Email (opsional)', emailPlaceholder: 'nama@bisnis.com', addressLabel: 'Alamat', address: '', mapsUrl: '', mapsLabel: 'Buka Google Maps', publicEmail: '', imageAlt: 'Ilustrasi website untuk mendiskusikan kebutuhan bisnis' };
+export const pageSchemas: { items: { path: string; label: string; structuredSchema: string }[] } = { items: [
+ ...[['/', 'Home'], ['/layanan', 'Layanan'], ['/hubungi-kami', 'Hubungi Kami'], ['/portofolio', 'Portofolio'], ['/blog', 'Daftar blog'], ['/kebijakan-privasi', 'Kebijakan Privasi'], ['/toko', 'Katalog paket'], ['/toko/cart', 'Keranjang'], ['/toko/checkout', 'Checkout'], ['/toko/terima-kasih', 'Konfirmasi order']].map(([path, label]) => ({ path: path ?? '/', label: label ?? '', structuredSchema: '' })),
+ ...servicePages.items.map(s => ({ path: `/layanan/${s.slug}`, label: s.title, structuredSchema: '' })),
+ ...products.map(p => ({ path: `/toko/p/${p.slug}`, label: p.name, structuredSchema: '' })),
+] };

@@ -1,4 +1,4 @@
-import { pageCopy, servicesCopy, portfolioCopy, shopCopy, aboutCopy, blogCopy, siteConfig, products, addons } from "./site-config";
+import { pageCopy, servicesCopy, portfolioCopy, shopCopy, aboutCopy, blogCopy, siteConfig, products, addons, navigationConfig, servicePages, contactPageCopy, pageSchemas } from "./site-config";
 
 // Editable content sections. Overrides stored in the database are deep-merged
 // onto these default objects at runtime (see applyContent).
@@ -6,7 +6,10 @@ export const contentSections = {
   home: { label: "Beranda & umum", target: pageCopy as unknown as Record<string, unknown> },
   services: { label: "Layanan", target: servicesCopy as unknown as Record<string, unknown> },
   portfolio: { label: "Portofolio", target: portfolioCopy as unknown as Record<string, unknown> },
-  about: { label: "Tentang Kami", target: aboutCopy as unknown as Record<string, unknown> },
+  contactPage: { label: "Hubungi Kami", target: contactPageCopy as unknown as Record<string, unknown> },
+  navigation: { label: "Menu website", target: navigationConfig as unknown as Record<string, unknown> },
+  servicePages: { label: "Halaman layanan", target: servicePages as unknown as Record<string, unknown> },
+  schemas: { label: "Schema Google", target: pageSchemas as unknown as Record<string, unknown> },
   blog: { label: "Halaman blog", target: blogCopy as unknown as Record<string, unknown> },
   shop: { label: "Teks toko", target: shopCopy as unknown as Record<string, unknown> },
   contact: { label: "Kontak & analitik", target: siteConfig as unknown as Record<string, unknown> },
@@ -23,7 +26,7 @@ const pristine = {
 };
 
 export function defaultSection(key: ContentKey) {
-  return structuredClone(pristine.sections[key]!);
+  return structuredClone(pristine.sections[key] ?? {});
 }
 export function defaultProducts() {
   return structuredClone(pristine.products);
@@ -56,7 +59,7 @@ export function applyContent(overrides: ContentOverrides | null | undefined) {
   if (lastApplied === data) return;
   lastApplied = data;
   for (const [key, section] of Object.entries(contentSections)) {
-    resetTo(section.target, pristine.sections[key]!);
+    resetTo(section.target, pristine.sections[key] ?? {});
     const over = data[key];
     if (isObj(over)) deepMerge(section.target, over);
   }
