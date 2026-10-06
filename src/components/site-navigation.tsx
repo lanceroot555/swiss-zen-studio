@@ -111,7 +111,7 @@ function Submenu({ label, children, onNavigate }: { label: string; children: { h
 }
 
 export function SiteNavigation({ onNavigate, footer = false }: { onNavigate?: () => void; footer?: boolean }) {
-  return <>{navigationConfig.items.filter(i => i.visible).map((item, i) => <div key={`${item.href}-${i}`} className={footer ? "" : "relative"}>
+  return <>{navigationConfig.items.filter(i => i.visible).map((item, i) => <div key={`${item.href}-${i}`} className={footer ? "" : "relative flex items-center gap-1"}>
     <MenuLink href={item.href} onClick={onNavigate} className={footer
       ? "block rounded-sm py-1.5 text-sm font-semibold text-inverse-foreground transition-colors hover:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
       : "block rounded-sm px-1 py-2.5 text-sm font-semibold text-inverse-foreground transition-colors hover:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-inverse"}>{item.label}</MenuLink>
