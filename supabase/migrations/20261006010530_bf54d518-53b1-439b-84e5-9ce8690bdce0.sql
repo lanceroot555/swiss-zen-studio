@@ -1,0 +1,2 @@
+CREATE POLICY orders_private ON public.orders FOR ALL TO anon, authenticated USING (false) WITH CHECK (false);
+CREATE POLICY attempts_private ON public.order_attempts FOR ALL TO anon, authenticated USING (false) WITH CHECK (false);
