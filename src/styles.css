@@ -19,8 +19,8 @@
  */
 
 @theme inline {
-  --font-sans: "DM Sans", "Helvetica Neue", Arial, sans-serif;
-  --font-display: "Space Grotesk", "Helvetica Neue", Arial, sans-serif;
+  --font-sans: "Manrope", "Helvetica Neue", Arial, sans-serif;
+  --font-display: "Sora", "Helvetica Neue", Arial, sans-serif;
   --radius-sm: calc(var(--radius) - 4px);
   --radius-md: calc(var(--radius) - 2px);
   --radius-lg: var(--radius);
@@ -29,6 +29,10 @@
   --radius-3xl: calc(var(--radius) + 12px);
   --radius-4xl: calc(var(--radius) + 16px);
   --color-background: var(--background);
+  --color-inverse: var(--inverse);
+  --color-inverse-foreground: var(--inverse-foreground);
+  --color-inverse-muted: var(--inverse-muted);
+  --color-inverse-border: var(--inverse-border);
   --color-foreground: var(--foreground);
   --color-card: var(--card);
   --color-card-foreground: var(--card-foreground);
@@ -64,14 +68,18 @@
 }
 
 :root {
-  --radius: 0.25rem;
+  --radius: 0.5rem;
+  --inverse: oklch(from #050A1B l c h);
+  --inverse-foreground: oklch(from #FFFFFF l c h);
+  --inverse-muted: oklch(from #94A3B8 l c h);
+  --inverse-border: oklch(1 0 0 / 12%);
   --background: oklch(1 0 0);
-  --foreground: oklch(0.252 0.045 263.1);
+  --foreground: oklch(from #050A1B l c h);
   --card: oklch(1 0 0);
   --card-foreground: oklch(0.129 0.042 264.695);
   --popover: oklch(1 0 0);
   --popover-foreground: oklch(0.129 0.042 264.695);
-  --primary: oklch(0.396 0.175 263.6);
+  --primary: oklch(from #EF1717 l c h);
   --primary-foreground: oklch(1 0 0);
   --secondary: oklch(0.972 0.004 264.5);
   --secondary-foreground: oklch(0.208 0.042 265.755);
@@ -106,8 +114,8 @@
   --card-foreground: oklch(0.984 0.003 247.858);
   --popover: oklch(0.208 0.042 265.755);
   --popover-foreground: oklch(0.984 0.003 247.858);
-  --primary: oklch(0.929 0.013 255.508);
-  --primary-foreground: oklch(0.208 0.042 265.755);
+  --primary: oklch(from #EF1717 l c h);
+  --primary-foreground: oklch(1 0 0);
   --secondary: oklch(0.279 0.041 260.031);
   --secondary-foreground: oklch(0.984 0.003 247.858);
   --muted: oklch(0.279 0.041 260.031);
@@ -163,5 +171,8 @@
   margin-inline: auto;
   padding: 3.5rem 1.25rem;
   scroll-margin-top: 6rem;
-  @media (min-width: 768px) { padding: 4.5rem 2rem; }
+  @media (min-width: 768px) { padding: 5rem 2rem; }
 }
+
+@keyframes reveal-content { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: translateY(0); } }
+.hero-content { animation: reveal-content 600ms ease-out both; }

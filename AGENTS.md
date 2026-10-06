@@ -13,3 +13,5 @@
 - Submit consultation requests through a validated TanStack server function so browser input never directly controls email delivery.
 
 - Keep editorial spacing in the shared site-section utility and apply font/color roles through global semantic tokens; this preserves consistent hierarchy across content pages.
+
+- Use bundled illustrative website imagery with explicit sample captions rather than fabricated portfolio metrics; this keeps agency visuals honest while real case studies are unavailable.
