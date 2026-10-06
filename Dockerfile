@@ -3,7 +3,7 @@
 FROM oven/bun:1 AS build
 WORKDIR /app
 COPY package.json bun.lock bunfig.toml ./
-RUN bun install --frozen-lockfile
+RUN bun install
 COPY . .
 # VITE_* dibakar saat build oleh konfig Lovable — wajib lewat build args
 ARG VITE_SUPABASE_URL
