@@ -16,12 +16,9 @@ export const Route = createFileRoute("/_authenticated/admin/konten")({ component
 function ContentPage() {
   const router = useRouter();
   const [key, setKey] = useState<ContentKey>("home");
-  const [draft, setDraft] = useState<unknown>(null);
+  const [draft, setDraft] = useState<unknown>(() => structuredClone(contentSections.home.target));
   const [busy, setBusy] = useState(false);
 
-  useEffect(() => {
-    setDraft(structuredClone(contentSections[key].target));
-  }, [key]);
 
   async function save() {
     let payload = draft;
@@ -54,7 +51,7 @@ function ContentPage() {
       </div>
       <div className="flex flex-wrap gap-2">
         {(Object.keys(contentSections) as ContentKey[]).map((k) => (
-          <Button key={k} variant={k === key ? "default" : "outline"} size="sm" onClick={() => setKey(k)}>{contentSections[k].label}</Button>
+          <Button key={k} variant={k === key ? "default" : "outline"} size="sm" onClick={() => { setDraft(structuredClone(contentSections[k].target)); setKey(k); }}>{contentSections[k].label}</Button>
         ))}
       </div>
       <div className="rounded-lg border bg-background p-5">{draft !== null && (key === "navigation" ? <MenuEditor items={(draft as {items:MenuItem[]}).items} onChange={items=>setDraft({items})}/> : key === "schemas" ? <PageSchemaEditor value={draft as typeof pageSchemas} onChange={setDraft}/> : <ValueEditor name={key} value={draft} onChange={setDraft} />)}</div>
