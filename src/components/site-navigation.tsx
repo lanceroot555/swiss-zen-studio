@@ -15,7 +15,7 @@ export function MenuLink({ href, children, onClick, className, linkRef }: { href
   return null;
 }
 
-function Submenu({ label, children, onNavigate }: { label: string; children: { href: string; label: string; visible: boolean }[]; onNavigate?: () => void }) {
+function Submenu({ label, children, onNavigate }: { label: string; children: { href: string; label: string; visible: boolean }[]; onNavigate?: (() => void) | undefined }) {
   const [open, setOpen] = useState(false);
   const rootRef = useRef<HTMLDivElement>(null);
   const buttonRef = useRef<HTMLButtonElement>(null);
