@@ -7,7 +7,7 @@ import { bootstrapAdmin } from "@/lib/admin.functions";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import logo from "@/assets/dimaloka-white-logo.png.asset.json";
+import logo from "@/assets/dimaloka-white-logo.png";
 
 export const Route = createFileRoute("/auth")({
   head: () => ({
@@ -64,7 +64,7 @@ function AuthPage() {
   return (
     <main className="grid min-h-screen bg-inverse text-inverse-foreground lg:grid-cols-2">
       <section className="hidden flex-col justify-between p-12 lg:flex">
-        <Link to="/"><img src={logo.url} alt="Dimaloka" className="h-auto w-40" /></Link>
+        <Link to="/"><img src={logo} alt="Dimaloka" className="h-auto w-40" /></Link>
         <div>
           <h1 className="font-display text-3xl font-semibold leading-tight">Kelola isi website Dimaloka dari satu tempat.</h1>
           <p className="mt-4 max-w-md text-inverse-muted">Halaman, paket toko, dan artikel blog dengan pengecekan SEO.</p>

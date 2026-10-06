@@ -2,7 +2,7 @@ import { Link } from '@tanstack/react-router';
 import { MessageCircle, Mail, Phone, ArrowUpRight } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { SiteNavigation } from './site-navigation';
-import logo from '@/assets/dimaloka-white-logo.png.asset.json';
+import logo from "@/assets/dimaloka-white-logo.png";
 import { pageCopy, siteConfig, servicePages, contactPageCopy, whatsappUrl } from '@/lib/site-config';
 
 export function SiteFooter() {
@@ -14,7 +14,7 @@ export function SiteFooter() {
           <div className="grid gap-12 border-b border-inverse-border pb-12 sm:grid-cols-2 lg:grid-cols-4">
             {/* Brand + kontak */}
             <div>
-              <img src={logo.url} alt={siteConfig.name} className="h-auto w-40" />
+              <img src={logo} alt={siteConfig.name} className="h-auto w-40" />
               <p className="mt-5 max-w-xs text-sm leading-7 text-inverse-muted">{siteConfig.description}</p>
               <ul className="mt-6 space-y-3 text-sm font-semibold">
                 <li>

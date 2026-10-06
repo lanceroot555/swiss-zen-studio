@@ -4,7 +4,7 @@ import { LayoutDashboard, FileText, Package, Newspaper, Users, LogOut, ExternalL
 import { supabase } from "@/integrations/supabase/client";
 import { useMyRoles } from "@/lib/use-roles";
 import { Button } from "@/components/ui/button";
-import logo from "@/assets/dimaloka-white-logo.png.asset.json";
+import logo from "@/assets/dimaloka-white-logo.png";
 
 export const Route = createFileRoute("/_authenticated/admin")({
   head: () => ({ meta: [{ title: "Dashboard — Dimaloka" }, { name: "robots", content: "noindex" }] }),
@@ -36,7 +36,7 @@ function AdminLayout() {
   return (
     <div className="min-h-screen bg-muted/40 lg:grid lg:grid-cols-[240px_1fr]">
       <aside className="flex flex-col bg-inverse text-inverse-foreground lg:sticky lg:top-0 lg:h-screen">
-        <div className="flex items-center justify-between p-5"><img src={logo.url} alt="Dimaloka" className="h-auto w-32" /></div>
+        <div className="flex items-center justify-between p-5"><img src={logo} alt="Dimaloka" className="h-auto w-32" /></div>
         <nav className="flex gap-1 overflow-x-auto px-3 pb-3 lg:flex-1 lg:flex-col lg:overflow-visible" aria-label="Menu dashboard">
           {isStaff && links.filter((l) => l.show).map((l) => (
             <Link key={l.to} to={l.to} activeOptions={{ exact: "exact" in l }} className="flex shrink-0 items-center gap-3 rounded-md px-3 py-2 text-sm text-inverse-muted hover:bg-inverse-foreground/10 data-[status=active]:bg-inverse-foreground/10 data-[status=active]:text-inverse-foreground">
