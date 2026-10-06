@@ -5,17 +5,22 @@ export interface ClientLogo {
   url: string;
 }
 
-/** Di bawah ambang ini, logo ditampilkan statis — marquee baru masuk akal kalau
- *  logonya sudah banyak, karena track harus selalu lebih lebar dari container
- *  atau logo yang sama akan terlihat dua kali sekaligus. */
-const MARQUEE_THRESHOLD = 5;
+/** Jarak antar logo (px). */
+const GAP = 56;
+/** Lebar tetap tiap slot logo. */
+const SLOT_W = 170;
+/** Lebar minimum satu set logo sebelum digandakan, supaya track selalu lebih
+ *  lebar dari layar — kalau tidak, logo yang sama terlihat dua kali sekaligus. */
+const MIN_SET_W = 1400;
 
 /**
  * Section "Dipercaya oleh klien nasional".
  *
  * Logo dikelola lewat dashboard (Supabase Storage bucket `client-logos` +
- * override `site_content.clients`). Kalau kosong, section tidak dirender —
- * situs tidak pernah menampilkan deretan logo kosong.
+ * override `site_content.clients`). Kosong = section tidak dirender.
+ *
+ * Selalu berjalan sebagai marquee: daftar diulang sampai cukup lebar, lalu
+ * digandakan sekali supaya animasi translateX(-50%) menyambung tanpa jeda.
  */
 export function ClientMarquee({ logos, label }: { logos: ClientLogo[]; label: string }) {
   const [mounted, setMounted] = useState(false);
@@ -24,9 +29,10 @@ export function ClientMarquee({ logos, label }: { logos: ClientLogo[]; label: st
   const valid = logos.filter((l) => l.url.trim());
   if (!valid.length) return null;
 
-  const scrolling = valid.length >= MARQUEE_THRESHOLD;
-  // Untuk marquee: gandakan sekali supaya translateX(-50%) menyambung mulus.
-  const track = scrolling ? [...valid, ...valid] : valid;
+  const step = SLOT_W + GAP;
+  const copies = Math.max(1, Math.ceil(MIN_SET_W / (valid.length * step)));
+  const set = Array.from({ length: copies }).flatMap(() => valid);
+  const track = [...set, ...set];
 
   return (
     <section id="klien" className="border-b border-border bg-background" aria-label="Dipercaya oleh">
@@ -35,39 +41,29 @@ export function ClientMarquee({ logos, label }: { logos: ClientLogo[]; label: st
           {label}
         </p>
 
-        {scrolling ? (
-          <div className="relative mt-8 overflow-hidden [mask-image:linear-gradient(90deg,transparent,black_8%,black_92%,transparent)] [-webkit-mask-image:linear-gradient(90deg,transparent,black_8%,black_92%,transparent)]">
-            <div
-              className={`flex w-max items-center gap-10 ${mounted ? "animate-[client-marquee_26s_linear_infinite]" : ""}`}
-              style={{ animationPlayState: mounted ? "running" : "paused" }}
-            >
-              {track.map((logo, i) => (
-                <div key={`${logo.url}-${i}`} className="flex h-16 w-[170px] shrink-0 items-center justify-center" aria-hidden={i >= valid.length}>
-                  <img
-                    src={logo.url}
-                    alt={i >= valid.length ? "" : logo.name}
-                    loading="lazy"
-                    draggable={false}
-                    className="max-h-16 max-w-[150px] object-contain opacity-70 transition-opacity duration-300 hover:opacity-100"
-                  />
-                </div>
-              ))}
-            </div>
-          </div>
-        ) : (
-          <div className="mt-8 flex flex-wrap items-center justify-center gap-x-10 gap-y-6">
-            {valid.map((logo) => (
-              <img
-                key={logo.url}
-                src={logo.url}
-                alt={logo.name}
-                loading="lazy"
-                draggable={false}
-                className="h-14 w-auto max-w-[170px] object-contain opacity-70 transition-opacity duration-300 hover:opacity-100"
-              />
+        <div className="relative mt-8 overflow-hidden [mask-image:linear-gradient(90deg,transparent,black_8%,black_92%,transparent)] [-webkit-mask-image:linear-gradient(90deg,transparent,black_8%,black_92%,transparent)]">
+          <div
+            className={`flex w-max items-center ${mounted ? "animate-[client-marquee_26s_linear_infinite]" : ""}`}
+            style={{ gap: GAP, animationPlayState: mounted ? "running" : "paused" }}
+          >
+            {track.map((logo, i) => (
+              <div
+                key={`${logo.url}-${i}`}
+                className="flex shrink-0 items-center justify-center"
+                style={{ width: SLOT_W, height: 64 }}
+                aria-hidden={i >= set.length}
+              >
+                <img
+                  src={logo.url}
+                  alt={i >= set.length ? "" : logo.name}
+                  loading="lazy"
+                  draggable={false}
+                  className="max-h-16 max-w-[150px] object-contain opacity-70 transition-opacity duration-300 hover:opacity-100"
+                />
+              </div>
             ))}
           </div>
-        )}
+        </div>
       </div>
     </section>
   );
