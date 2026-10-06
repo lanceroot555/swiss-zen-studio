@@ -1,4 +1,5 @@
 import { Link } from "@tanstack/react-router";
+import { ChevronDown } from "lucide-react";
 import { navigationConfig } from "@/lib/site-config";
 import type { ReactNode } from "react";
 const staticPaths = ["/", "/layanan", "/hubungi-kami", "/portofolio", "/toko", "/blog", "/kebijakan-privasi", "/toko/cart", "/toko/checkout"] as const;
@@ -14,6 +15,6 @@ export function MenuLink({ href, children, onClick, className }: { href: string;
 export function SiteNavigation({ onNavigate, footer = false }: { onNavigate?: () => void; footer?: boolean }) {
   return <>{navigationConfig.items.filter(i => i.visible).map((item, i) => <div key={`${item.href}-${i}`} className={footer ? "" : "relative"}>
     <MenuLink href={item.href} onClick={onNavigate} className="block py-2 text-sm transition-colors hover:text-inverse-foreground">{item.label}</MenuLink>
-    {!footer && item.children.some(c => c.visible) && <details className="lg:absolute lg:right-0 lg:top-1.5 lg:translate-x-5"><summary aria-label={`Submenu ${item.label}`} className="cursor-pointer list-none px-2 py-1 text-xs">⌄</summary><div className="min-w-64 border-l border-inverse-border bg-inverse px-4 py-2 lg:absolute lg:right-0 lg:top-10 lg:rounded-md lg:border lg:shadow-lg">{item.children.filter(c => c.visible).map((c, j) => <MenuLink key={`${c.href}-${j}`} href={c.href} onClick={onNavigate} className="block py-2.5 text-sm text-inverse-muted hover:text-inverse-foreground">{c.label}</MenuLink>)}</div></details>}
+    {!footer && item.children.some(c => c.visible) && <details className="group lg:absolute lg:right-0 lg:top-1.5 lg:translate-x-5"><summary aria-label={`Submenu ${item.label}`} className="inline-flex h-7 w-7 cursor-pointer list-none items-center justify-center rounded-full text-inverse-muted transition-colors hover:bg-inverse-muted/10 hover:text-inverse-foreground"><ChevronDown className="h-4 w-4 transition-transform duration-300 ease-out group-open:rotate-180" strokeWidth={2} aria-hidden="true" /></summary><div className="min-w-64 border-l border-inverse-border bg-inverse px-4 py-2 lg:absolute lg:right-0 lg:top-10 lg:rounded-md lg:border lg:shadow-lg">{item.children.filter(c => c.visible).map((c, j) => <MenuLink key={`${c.href}-${j}`} href={c.href} onClick={onNavigate} className="block py-2.5 text-sm text-inverse-muted hover:text-inverse-foreground">{c.label}</MenuLink>)}</div></details>}
   </div>)}</>;
 }
