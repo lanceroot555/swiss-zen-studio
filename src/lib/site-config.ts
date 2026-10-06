@@ -136,3 +136,39 @@ export const products: Product[] = initialProducts.map(([slug,name,kategori,tipe
 export const addons = [{slug:"domain-hosting",name:"Domain + hosting 1 tahun",harga:null,tipe_harga:"sekali_bayar"},{slug:"desain-logo",name:"Desain logo",harga:null,tipe_harga:"sekali_bayar"},{slug:"copywriting-tambahan",name:"Copywriting halaman tambahan",harga:null,tipe_harga:"sekali_bayar"},{slug:"email-bisnis",name:"Setup email bisnis",harga:null,tipe_harga:"sekali_bayar"}] as const;
 export const portfolioCopy = {seoTitle:"Portofolio & arah desain website",eyebrow:"PORTOFOLIO DIMALOKA",title:"Website dengan tujuan yang jelas.",description:"Lihat arah desain untuk website bisnis dan toko online. Studi kasus klien akan ditambahkan setelah materi siap dipublikasikan.",category:"Kategori",search:"Cari desain",all:"Semua desain",sample:"Ilustrasi desain · bukan proyek klien",view:"Lihat ilustrasi",empty:"Tidak ada desain yang sesuai.",reset:"Reset pencarian",homeLink:"Lihat semua portofolio",concepts:[{name:"Website bisnis arsitektur",category:"Company Profile",image:"website"},{name:"Toko online perawatan kulit",category:"Toko Online",image:"commerce"},{name:"Laporan pemasaran digital",category:"Digital Marketing",image:"marketing"}]};
 export const servicesCopy = {eyebrow:"LAYANAN DIMALOKA",title:"Solusi digital yang bekerja bersama.",description:"Dari website custom hingga pemasaran digital. Pilih fondasi dan kanal yang sesuai dengan tujuan bisnis Anda.",previous:"Layanan sebelumnya",next:"Layanan berikutnya",sample:"Visual ilustrasi layanan",customLabel:"FULL CUSTOM WEBSITE",customTitle:"Website yang mengikuti bisnis Anda.",customText:"Bukan sekadar memilih template. Kami menyusun halaman, fitur, dan alur pemesanan berdasarkan kebutuhan bisnis—dari company profile hingga toko online dengan order WhatsApp.",features:["Company profile","Landing page","Katalog produk","Keranjang belanja","Order WhatsApp","Fondasi SEO"],shopCta:"Lihat semua paket & beli online"};
+export const aboutCopy = {
+  seoTitle: "Tentang Dimaloka",
+  seoDescription: "Kenali Dimaloka, digital growth partner untuk UMKM dan bisnis Indonesia di bidang website, SEO, dan pemasaran digital.",
+  eyebrow: "TENTANG KAMI",
+  title: "Tentang Dimaloka.",
+  description: "Profil lengkap Dimaloka sedang disiapkan. Bagian ini akan diperbarui melalui dashboard.",
+  sections: [
+    { title: "Cerita kami", text: "Sedang disiapkan." },
+    { title: "Visi", text: "Sedang disiapkan." },
+    { title: "Misi", text: "Sedang disiapkan." },
+  ],
+  values: [
+    { title: "Nilai pertama", text: "Sedang disiapkan." },
+  ],
+  ctaTitle: "Ingin berdiskusi tentang bisnis Anda?",
+  ctaText: "Ceritakan kebutuhan Anda melalui WhatsApp. Konsultasi awal gratis.",
+};
+export const blogCopy = {
+  eyebrow: "BLOG DIMALOKA",
+  title: "Wawasan SEO, website, dan pemasaran digital untuk UMKM.",
+  description: "Panduan praktis seputar pencarian Google, website bisnis, dan iklan digital — ditulis untuk pemilik usaha.",
+  search: "Cari artikel",
+  all: "Semua",
+  featured: "Artikel terbaru",
+  readMore: "Baca artikel",
+  minutes: "menit baca",
+  empty: "Artikel pertama sedang disiapkan. Wawasan seputar pencarian, iklan, dan website bisnis akan dipublikasikan di sini.",
+  noResult: "Tidak ada artikel yang sesuai.",
+  toc: "Daftar isi",
+  share: "Bagikan",
+  copied: "Tautan disalin",
+  related: "Artikel terkait",
+  author: "Penulis",
+  ctaTitle: "Butuh bantuan menerapkannya di bisnis Anda?",
+  ctaText: "Diskusikan kebutuhan website, SEO, atau iklan Anda bersama Dimaloka. Konsultasi awal gratis.",
+};

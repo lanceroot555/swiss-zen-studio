@@ -11,3 +11,7 @@
 - [x] Gunakan WhatsApp saja untuk chat dan tambahkan pembatasan order sederhana sesuai pilihan pengguna.
 - [ ] Notifikasi email — menunggu domain pengirim terverifikasi.
 - [x] Uji keranjang, validasi, order WhatsApp, penyimpanan, dan tampilan layar kecil.
+# Dashboard admin & blog
+- [x] Login dashboard, peran Administrator dan Editor blog, kelola pengguna.
+- [x] Edit konten semua halaman, paket & harga, halaman Tentang Kami.
+- [x] Blog profesional dengan editor SEO.

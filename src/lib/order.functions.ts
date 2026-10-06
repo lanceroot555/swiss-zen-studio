@@ -4,6 +4,9 @@ import { checkoutSchema, resolveCart, totals, orderMessage, type CheckoutData } 
 import { shopCopy, whatsappUrl } from './site-config';
 export const submitOrder = createServerFn({method:'POST'}).inputValidator((data:CheckoutData)=>checkoutSchema.parse(data)).handler(async({data})=>{
  if(data.company) throw new Error(shopCopy.errors.spam);
+ const {loadContentOverrides}=await import('./public-supabase.server');
+ const {applyContent}=await import('./content');
+ applyContent(await loadContentOverrides());
  const lines=resolveCart(data.items);
  if(lines.some(l=>!l.available) || !lines.some(l=>!l.addon)) throw new Error(shopCopy.errors.cart);
  // Guest writes are an intentionally public capability. Validate and resolve all trusted catalog values before privileged persistence; no public read endpoint exists.
