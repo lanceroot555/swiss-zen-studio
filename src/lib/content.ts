@@ -1,4 +1,4 @@
-import { pageCopy, servicesCopy, portfolioCopy, shopCopy, aboutCopy, blogCopy, siteConfig, products, addons, navigationConfig, servicePages, contactPageCopy, pageSchemas } from "./site-config";
+import { pageCopy, servicesCopy, portfolioCopy, shopCopy, blogCopy, siteConfig, products, addons, navigationConfig, servicePages, contactPageCopy, pageSchemas } from "./site-config";
 
 // Editable content sections. Overrides stored in the database are deep-merged
 // onto these default objects at runtime (see applyContent).

@@ -3,7 +3,7 @@ import { PageSchemaEditor } from "@/components/admin/page-schema-editor";
 import { parseSchema, serializeSchema } from "@/lib/structured-schema";
 import { navigationConfig, pageSchemas, type MenuItem } from "@/lib/site-config";
 import { createFileRoute, useRouter } from "@tanstack/react-router";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { toast } from "sonner";
 import { supabase } from "@/integrations/supabase/client";
 import { contentSections, defaultSection, type ContentKey } from "@/lib/content";
