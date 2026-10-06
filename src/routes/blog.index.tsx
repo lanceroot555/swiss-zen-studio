@@ -45,7 +45,7 @@ function BlogIndex() {
 
   return (
     <main className="bg-background text-foreground">
-      <section className="bg-inverse py-16 text-inverse-foreground md:py-20">
+      <section className="bg-inverse section-glow-dark py-16 text-inverse-foreground md:py-20">
         <div className="mx-auto max-w-7xl px-5 md:px-8">
           <nav aria-label="Breadcrumb" className="text-xs text-inverse-muted"><Link to="/">Beranda</Link> / <span>Blog</span></nav>
           <p className="mt-6 text-xs font-semibold tracking-widest text-primary">{c.eyebrow}</p>
