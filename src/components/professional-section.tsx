@@ -12,16 +12,15 @@ export function ProfessionalSection() {
   return (
     <section id="profesional" className="border-b border-border bg-secondary" aria-labelledby="profesional-title">
       <div className="mx-auto grid max-w-7xl items-center gap-12 px-5 py-16 md:px-8 md:py-20 lg:grid-cols-2 lg:gap-16">
-        {/* Visual */}
+        {/* Visual — PNG transparan, background mengikuti warna section */}
         <figure className="relative order-last lg:order-first">
-          <div aria-hidden="true" className="absolute inset-0 -z-10 scale-90 rounded-full bg-primary/15 blur-3xl" />
           <img
             src={illustration}
             width={1536}
             height={1024}
             alt="Ilustrasi jasa pembuatan website modern Dimaloka"
             loading="lazy"
-            className="w-full rounded-2xl object-cover"
+            className="w-full"
           />
         </figure>
 
