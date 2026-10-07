@@ -1,0 +1,93 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 750" role="img" aria-label="Ilustrasi fondasi SEO website">
+  <defs>
+    <linearGradient id="b-bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#FFF6F1"/>
+      <stop offset="1" stop-color="#F4F1EE"/>
+    </linearGradient>
+    <linearGradient id="b-accent" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#F25C40"/>
+      <stop offset="1" stop-color="#FF8A5B"/>
+    </linearGradient>
+    <filter id="b-sh" x="-30%" y="-30%" width="160%" height="160%">
+      <feDropShadow dx="0" dy="10" stdDeviation="18" flood-color="#8A5A48" flood-opacity="0.14"/>
+    </filter>
+    <filter id="b-glow" x="-60%" y="-60%" width="220%" height="220%">
+      <feGaussianBlur stdDeviation="42"/>
+    </filter>
+  </defs>
+
+  <rect width="1200" height="750" fill="url(#b-bg)"/>
+  <circle cx="240" cy="160" r="140" fill="#F25C40" opacity="0.11" filter="url(#b-glow)"/>
+  <circle cx="980" cy="600" r="130" fill="#4169E1" opacity="0.08" filter="url(#b-glow)"/>
+
+  <!-- Jendela browser -->
+  <g filter="url(#b-sh)">
+    <rect x="120" y="120" width="960" height="510" rx="20" fill="#FFFFFF" stroke="#EFE3DC"/>
+  </g>
+  <rect x="120" y="120" width="960" height="56" rx="20" fill="#F6EDE8"/>
+  <rect x="120" y="152" width="960" height="24" fill="#F6EDE8"/>
+  <circle cx="152" cy="148" r="7" fill="#F25C40"/>
+  <circle cx="176" cy="148" r="7" fill="#F0B27A"/>
+  <circle cx="200" cy="148" r="7" fill="#8FD6A0"/>
+  <rect x="236" y="136" width="380" height="24" rx="12" fill="#FFFFFF" stroke="#EFE3DC"/>
+
+  <!-- Hasil pencarian dengan posisi teratas -->
+  <rect x="164" y="212" width="300" height="60" rx="12" fill="url(#b-accent)" opacity="0.12"/>
+  <circle cx="196" cy="242" r="13" fill="none" stroke="#F25C40" stroke-width="3.5"/>
+  <line x1="205" y1="251" x2="215" y2="261" stroke="#F25C40" stroke-width="3.5" stroke-linecap="round"/>
+  <rect x="236" y="230" width="200" height="12" rx="6" fill="#26201D" opacity="0.78"/>
+  <rect x="236" y="250" width="140" height="9" rx="4.5" fill="#26201D" opacity="0.25"/>
+  <text x="470" y="248" font-family="system-ui, -apple-system, sans-serif" font-size="17" font-weight="700" fill="#3FA83F">#1</text>
+
+  <!-- Hasil lain di bawah -->
+  <g opacity="0.4">
+    <rect x="164" y="292" width="240" height="11" rx="5.5" fill="#26201D" opacity="0.55"/>
+    <rect x="164" y="312" width="420" height="8" rx="4" fill="#26201D" opacity="0.3"/>
+    <rect x="164" y="330" width="360" height="8" rx="4" fill="#26201D" opacity="0.3"/>
+    <rect x="164" y="372" width="200" height="11" rx="5.5" fill="#26201D" opacity="0.55"/>
+    <rect x="164" y="392" width="400" height="8" rx="4" fill="#26201D" opacity="0.3"/>
+    <rect x="164" y="410" width="330" height="8" rx="4" fill="#26201D" opacity="0.3"/>
+    <rect x="164" y="452" width="230" height="11" rx="5.5" fill="#26201D" opacity="0.55"/>
+    <rect x="164" y="472" width="380" height="8" rx="4" fill="#26201D" opacity="0.3"/>
+  </g>
+
+  <!-- Panel fondasi teknis di kanan -->
+  <g filter="url(#b-sh)">
+    <rect x="660" y="212" width="380" height="386" rx="16" fill="#FDFAF8" stroke="#EFE3DC"/>
+  </g>
+  <text x="692" y="252" font-family="system-ui, -apple-system, sans-serif" font-size="18" font-weight="700" fill="#26201D">Fondasi teknis</text>
+
+  <g font-family="system-ui, -apple-system, sans-serif" font-size="15" fill="#26201D">
+    <g>
+      <circle cx="700" cy="298" r="11" fill="#52D352" opacity="0.2"/>
+      <path d="M695 298 l4 5 l8 -9" fill="none" stroke="#3FA83F" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+      <text x="726" y="304">Struktur URL</text>
+    </g>
+    <g>
+      <circle cx="700" cy="352" r="11" fill="#52D352" opacity="0.2"/>
+      <path d="M695 352 l4 5 l8 -9" fill="none" stroke="#3FA83F" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+      <text x="726" y="358">Judul &amp; deskripsi</text>
+    </g>
+    <g>
+      <circle cx="700" cy="406" r="11" fill="#52D352" opacity="0.2"/>
+      <path d="M695 406 l4 5 l8 -9" fill="none" stroke="#3FA83F" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+      <text x="726" y="412">Kecepatan halaman</text>
+    </g>
+    <g>
+      <circle cx="700" cy="460" r="11" fill="#52D352" opacity="0.2"/>
+      <path d="M695 460 l4 5 l8 -9" fill="none" stroke="#3FA83F" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+      <text x="726" y="466">Data terstruktur</text>
+    </g>
+    <g>
+      <circle cx="700" cy="514" r="11" fill="#52D352" opacity="0.2"/>
+      <path d="M695 514 l4 5 l8 -9" fill="none" stroke="#3FA83F" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+      <text x="726" y="520">Sitemap &amp; robots</text>
+    </g>
+  </g>
+
+  <!-- Bar progres naik -->
+  <g opacity="0.85">
+    <rect x="660" y="626" width="380" height="6" rx="3" fill="#EFE3DC"/>
+    <rect x="660" y="626" width="270" height="6" rx="3" fill="url(#b-accent)"/>
+  </g>
+</svg>

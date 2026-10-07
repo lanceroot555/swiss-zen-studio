@@ -1,0 +1,100 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 750" role="img" aria-label="Ilustrasi estimasi biaya website UMKM">
+  <defs>
+    <linearGradient id="c-bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#FFF5EF"/>
+      <stop offset="1" stop-color="#F5F0EC"/>
+    </linearGradient>
+    <linearGradient id="c-accent" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#F25C40"/>
+      <stop offset="1" stop-color="#FF8A5B"/>
+    </linearGradient>
+    <filter id="c-sh" x="-30%" y="-30%" width="160%" height="160%">
+      <feDropShadow dx="0" dy="10" stdDeviation="18" flood-color="#8A5A48" flood-opacity="0.14"/>
+    </filter>
+    <filter id="c-glow" x="-60%" y="-60%" width="220%" height="220%">
+      <feGaussianBlur stdDeviation="40"/>
+    </filter>
+  </defs>
+
+  <rect width="1200" height="750" fill="url(#c-bg)"/>
+  <circle cx="960" cy="140" r="145" fill="#F25C40" opacity="0.11" filter="url(#c-glow)"/>
+  <circle cx="180" cy="640" r="115" fill="#FFB648" opacity="0.10" filter="url(#c-glow)"/>
+
+  <!-- Kartu rekap biaya -->
+  <g filter="url(#c-sh)">
+    <rect x="110" y="110" width="460" height="530" rx="20" fill="#FFFFFF" stroke="#EFE3DC"/>
+  </g>
+  <text x="146" y="162" font-family="system-ui, -apple-system, sans-serif" font-size="19" font-weight="700" fill="#26201D">Rincian lingkup pekerjaan</text>
+
+  <!-- Baris rincian -->
+  <g font-family="system-ui, -apple-system, sans-serif" font-size="16" fill="#26201D">
+    <g>
+      <rect x="146" y="196" width="270" height="11" rx="5.5" fill="#26201D" opacity="0.6"/>
+      <rect x="440" y="196" width="94" height="11" rx="5.5" fill="#F25C40" opacity="0.3"/>
+    </g>
+    <line x1="146" y1="232" x2="534" y2="232" stroke="#EFE3DC"/>
+    <g>
+      <rect x="146" y="254" width="220" height="11" rx="5.5" fill="#26201D" opacity="0.6"/>
+      <rect x="440" y="254" width="94" height="11" rx="5.5" fill="#F25C40" opacity="0.3"/>
+    </g>
+    <line x1="146" y1="290" x2="534" y2="290" stroke="#EFE3DC"/>
+    <g>
+      <rect x="146" y="312" width="248" height="11" rx="5.5" fill="#26201D" opacity="0.6"/>
+      <rect x="440" y="312" width="94" height="11" rx="5.5" fill="#F25C40" opacity="0.3"/>
+    </g>
+    <line x1="146" y1="348" x2="534" y2="348" stroke="#EFE3DC"/>
+    <g>
+      <rect x="146" y="370" width="196" height="11" rx="5.5" fill="#26201D" opacity="0.6"/>
+      <rect x="440" y="370" width="94" height="11" rx="5.5" fill="#F25C40" opacity="0.3"/>
+    </g>
+    <line x1="146" y1="406" x2="534" y2="406" stroke="#EFE3DC"/>
+    <g>
+      <rect x="146" y="428" width="232" height="11" rx="5.5" fill="#26201D" opacity="0.6"/>
+      <rect x="440" y="428" width="94" height="11" rx="5.5" fill="#F25C40" opacity="0.3"/>
+    </g>
+  </g>
+
+  <!-- Total -->
+  <rect x="146" y="478" width="388" height="86" rx="14" fill="#FDF5F1"/>
+  <rect x="176" y="504" width="120" height="13" rx="6.5" fill="#26201D" opacity="0.7"/>
+  <rect x="176" y="528" width="180" height="9" rx="4.5" fill="#26201D" opacity="0.25"/>
+  <rect x="404" y="504" width="100" height="34" rx="17" fill="url(#c-accent)"/>
+  <rect x="426" y="517" width="56" height="8" rx="4" fill="#FFFFFF" opacity="0.9"/>
+
+  <!-- Panel faktor penentu di kanan -->
+  <g filter="url(#c-sh)">
+    <rect x="630" y="170" width="460" height="410" rx="20" fill="#FFFFFF" stroke="#EFE3DC"/>
+  </g>
+  <text x="666" y="222" font-family="system-ui, -apple-system, sans-serif" font-size="19" font-weight="700" fill="#26201D">Yang menentukan biaya</text>
+
+  <g font-family="system-ui, -apple-system, sans-serif" font-size="16" fill="#26201D">
+    <g>
+      <rect x="666" y="256" width="44" height="44" rx="12" fill="url(#c-accent)" opacity="0.14"/>
+      <path d="M678 288 h20 M678 280 h20 M678 272 h12" stroke="#F25C40" stroke-width="3" stroke-linecap="round"/>
+      <text x="726" y="284">Jumlah halaman</text>
+    </g>
+    <g>
+      <rect x="666" y="320" width="44" height="44" rx="12" fill="url(#c-accent)" opacity="0.14"/>
+      <rect x="678" y="332" width="20" height="20" rx="4" fill="none" stroke="#F25C40" stroke-width="3"/>
+      <text x="726" y="348">Fitur yang dibutuhkan</text>
+    </g>
+    <g>
+      <rect x="666" y="384" width="44" height="44" rx="12" fill="url(#c-accent)" opacity="0.14"/>
+      <circle cx="688" cy="406" r="10" fill="none" stroke="#F25C40" stroke-width="3"/>
+      <text x="726" y="412">Desain atau template</text>
+    </g>
+    <g>
+      <rect x="666" y="448" width="44" height="44" rx="12" fill="url(#c-accent)" opacity="0.14"/>
+      <path d="M678 470 l7 -10 l7 6 l8 -12" fill="none" stroke="#F25C40" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+      <text x="726" y="476">Kesiapan materi</text>
+    </g>
+    <g>
+      <rect x="666" y="512" width="44" height="44" rx="12" fill="url(#c-accent)" opacity="0.14"/>
+      <path d="M688 524 v20 M678 534 h20" stroke="#F25C40" stroke-width="3" stroke-linecap="round"/>
+      <text x="726" y="540">Pengelolaan lanjutan</text>
+    </g>
+  </g>
+
+  <!-- Catatan bawah -->
+  <rect x="110" y="672" width="980" height="0" rx="0"/>
+</svg>

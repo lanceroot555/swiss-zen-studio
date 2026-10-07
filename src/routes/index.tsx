@@ -28,6 +28,7 @@ import { ProfessionalSection } from "@/components/professional-section";
 import heroIllustration from "@/assets/hero-illustration.png";
 import { trackEvent } from "@/lib/analytics";
 import { submitContact } from "@/lib/contact.functions";
+import { listPublishedPosts } from "@/lib/content.functions";
 import { pageSchema } from "@/lib/seo";
 import { pageCopy, services, siteConfig, whatsappUrl, type WhatsAppLocation } from "@/lib/site-config";
 import { clientsCopy } from "@/lib/clients-content";
@@ -41,6 +42,7 @@ const faqSchema = {
 };
 
 export const Route = createFileRoute("/")({
+  loader: async () => ({ posts: await listPublishedPosts() }),
   head: () => ({
     meta: [
       { title: pageCopy.seo.home.title },
@@ -91,6 +93,8 @@ function ConsultationForm() {
 function HomePage() {
   const [showFloating, setShowFloating] = useState(false);
   useEffect(() => { const onScroll = () => setShowFloating(window.scrollY > 300); onScroll(); window.addEventListener("scroll", onScroll, { passive: true }); return () => window.removeEventListener("scroll", onScroll); }, []);
+  // Tiga artikel terbaru dari dashboard; fallback ke judul bawaan bila belum ada.
+  const insights: { category: string; title: string; href: string | null }[] = (Route.useLoaderData().posts ?? []).slice(0, 3).map((p) => ({ category: p.category, title: p.title, href: p.slug }));
   return <div id="top" className="bg-background text-foreground"><main>
     <section className="overflow-hidden bg-inverse section-glow-dark text-inverse-foreground" aria-labelledby="hero-title">
       <div className="mx-auto grid max-w-7xl items-center gap-10 px-5 py-12 md:px-8 md:py-16 lg:grid-cols-2 lg:gap-16">
@@ -124,7 +128,7 @@ function HomePage() {
 
     <section id="faq" className="site-section grid gap-10 lg:grid-cols-[.85fr_1.15fr]"><div><p className="text-sm font-medium text-primary">07 / {pageCopy.sections.faq.eyebrow}</p><h2 className="mt-5 text-[26px] font-semibold leading-tight md:text-[32px]">{pageCopy.sections.faq.title}</h2><p className="mt-5 max-w-md text-base leading-7 text-muted-foreground">{pageCopy.sections.faq.description}</p></div><Accordion type="single" collapsible className="border-t border-border">{pageCopy.sections.faq.items.map((faq,i) => <AccordionItem key={faq.question} value={`faq-${i}`}><AccordionTrigger className="min-h-16 text-base font-medium hover:no-underline">{faq.question}</AccordionTrigger><AccordionContent className="pb-6 text-base leading-7 text-muted-foreground">{faq.answer}</AccordionContent></AccordionItem>)}</Accordion></section>
 
-    <section className="site-section"><SectionHeading index="08" {...pageCopy.sections.insights} /><div className="mt-9 grid gap-x-8 md:grid-cols-3">{pageCopy.insights.map(item => <article key={item.title} className="border-b border-border py-7"><span className="text-xs text-primary">{item.category} · {pageCopy.pending}</span><h3 className="mt-5 text-xl font-semibold leading-snug">{item.title}</h3><p className="mt-5 flex items-center gap-2 text-sm text-muted-foreground">{pageCopy.preparing}<ChevronRight className="size-4" /></p></article>)}</div><Button asChild variant="link" className="mt-6 px-0"><Link to="/blog">{pageCopy.cta.blog}<ArrowRight /></Link></Button></section>
+    <section className="site-section"><SectionHeading index="08" {...pageCopy.sections.insights} /><div className="mt-9 grid gap-x-8 md:grid-cols-3">{(insights.length ? insights : pageCopy.insights).map(item => <article key={item.title} className="border-b border-border py-7"><span className="text-xs text-primary">{item.category}</span><h3 className="mt-5 text-xl font-semibold leading-snug">{item.title}</h3>{item.href ? <Link to="/blog/$slug" params={{ slug: item.href }} className="mt-5 inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-primary">{pageCopy.preparing}<ChevronRight className="size-4" /></Link> : <p className="mt-5 flex items-center gap-2 text-sm text-muted-foreground">{pageCopy.preparing}<ChevronRight className="size-4" /></p>}</article>)}</div><Button asChild variant="link" className="mt-6 px-0"><Link to="/blog">{pageCopy.cta.blog}<ArrowRight /></Link></Button></section>
 
     <section id="konsultasi" className="border-t border-border bg-secondary section-glow-light"><div className="site-section grid gap-12 lg:grid-cols-2 lg:items-start"><div><p className="text-sm font-medium text-primary">09 / {pageCopy.sections.consultation.eyebrow}</p><h2 className="mt-6 max-w-lg text-[26px] font-semibold leading-[1.2] md:text-[32px]">{pageCopy.sections.consultation.title}</h2><p className="mt-6 max-w-lg text-base leading-7 text-muted-foreground">{pageCopy.sections.consultation.description}</p><div className="mt-8 border-t border-border pt-6"><p className="text-sm">{pageCopy.sections.consultation.direct}</p><Button asChild variant="link" className="mt-3 h-11 px-0 text-base"><WaLink location="hero"><MessageCircle />{siteConfig.phoneDisplay}</WaLink></Button></div></div><ConsultationForm /></div></section>
   </main></div>;

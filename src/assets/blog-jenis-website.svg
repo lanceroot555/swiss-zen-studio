@@ -1,0 +1,83 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 750" role="img" aria-label="Ilustrasi memilih jenis website">
+  <defs>
+    <linearGradient id="a-bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#FFF4EF"/>
+      <stop offset="1" stop-color="#F6EDE8"/>
+    </linearGradient>
+    <linearGradient id="a-accent" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#F25C40"/>
+      <stop offset="1" stop-color="#FF8A5B"/>
+    </linearGradient>
+    <filter id="a-sh" x="-30%" y="-30%" width="160%" height="160%">
+      <feDropShadow dx="0" dy="10" stdDeviation="18" flood-color="#8A5A48" flood-opacity="0.14"/>
+    </filter>
+    <filter id="a-glow" x="-60%" y="-60%" width="220%" height="220%">
+      <feGaussianBlur stdDeviation="40"/>
+    </filter>
+  </defs>
+
+  <rect width="1200" height="750" fill="url(#a-bg)"/>
+  <circle cx="980" cy="150" r="150" fill="#F25C40" opacity="0.12" filter="url(#a-glow)"/>
+  <circle cx="200" cy="620" r="120" fill="#52D352" opacity="0.10" filter="url(#a-glow)"/>
+
+  <!-- Tiga kartu pilihan: company profile, landing page, toko online -->
+  <g filter="url(#a-sh)">
+    <rect x="90" y="230" width="290" height="300" rx="18" fill="#FFFFFF" stroke="#EFE3DC"/>
+  </g>
+  <rect x="120" y="262" width="80" height="60" rx="10" fill="url(#a-accent)" opacity="0.16"/>
+  <rect x="134" y="282" width="52" height="8" rx="4" fill="#F25C40" opacity="0.6"/>
+  <rect x="134" y="298" width="34" height="8" rx="4" fill="#F25C40" opacity="0.35"/>
+  <rect x="120" y="346" width="200" height="14" rx="7" fill="#26201D" opacity="0.72"/>
+  <rect x="120" y="374" width="230" height="9" rx="4.5" fill="#26201D" opacity="0.18"/>
+  <rect x="120" y="393" width="180" height="9" rx="4.5" fill="#26201D" opacity="0.18"/>
+  <rect x="120" y="412" width="205" height="9" rx="4.5" fill="#26201D" opacity="0.18"/>
+  <rect x="120" y="462" width="120" height="34" rx="17" fill="#F6EDE8"/>
+  <rect x="138" y="475" width="84" height="8" rx="4" fill="#F25C40" opacity="0.55"/>
+
+  <g filter="url(#a-sh)">
+    <rect x="455" y="185" width="290" height="345" rx="18" fill="#FFFFFF" stroke="#F25C40"/>
+  </g>
+  <rect x="485" y="217" width="80" height="60" rx="10" fill="url(#a-accent)" opacity="0.9"/>
+  <rect x="499" y="237" width="52" height="8" rx="4" fill="#FFFFFF" opacity="0.9"/>
+  <rect x="499" y="253" width="34" height="8" rx="4" fill="#FFFFFF" opacity="0.55"/>
+  <rect x="485" y="301" width="200" height="14" rx="7" fill="#26201D" opacity="0.8"/>
+  <rect x="485" y="329" width="230" height="9" rx="4.5" fill="#26201D" opacity="0.2"/>
+  <rect x="485" y="348" width="180" height="9" rx="4.5" fill="#26201D" opacity="0.2"/>
+  <rect x="485" y="388" width="140" height="38" rx="19" fill="url(#a-accent)"/>
+  <rect x="507" y="403" width="96" height="8" rx="4" fill="#FFFFFF" opacity="0.92"/>
+  <rect x="485" y="446" width="230" height="9" rx="4.5" fill="#26201D" opacity="0.14"/>
+  <rect x="485" y="465" width="160" height="9" rx="4.5" fill="#26201D" opacity="0.14"/>
+
+  <g filter="url(#a-sh)">
+    <rect x="820" y="230" width="290" height="300" rx="18" fill="#FFFFFF" stroke="#EFE3DC"/>
+  </g>
+  <rect x="850" y="262" width="80" height="60" rx="10" fill="#F6EDE8"/>
+  <path d="M868 300 h12 l7 20 h24 l7 -14 h-32" fill="none" stroke="#F25C40" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+  <rect x="850" y="346" width="200" height="14" rx="7" fill="#26201D" opacity="0.72"/>
+  <rect x="850" y="374" width="230" height="9" rx="4.5" fill="#26201D" opacity="0.18"/>
+  <g fill="#F25C40" opacity="0.5">
+    <rect x="850" y="410" width="64" height="64" rx="10"/>
+    <rect x="928" y="410" width="64" height="64" rx="10" opacity="0.7"/>
+    <rect x="1006" y="410" width="64" height="64" rx="10" opacity="0.4"/>
+  </g>
+
+  <!-- Label pilihan -->
+  <g font-family="system-ui, -apple-system, sans-serif" font-size="19" font-weight="600" fill="#26201D" text-anchor="middle">
+    <text x="235" y="196">Company profile</text>
+    <text x="600" y="151">Landing page</text>
+    <text x="965" y="196">Toko online</text>
+  </g>
+
+  <!-- Tanda centang pada pilihan utama -->
+  <circle cx="600" cy="118" r="22" fill="#52D352" opacity="0.18"/>
+  <path d="M590 118 l7 8 l14 -16" fill="none" stroke="#3FA83F" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+
+  <!-- Alur bawah -->
+  <g stroke="#F25C40" stroke-width="3" stroke-dasharray="8 8" opacity="0.5">
+    <line x1="235" y1="560" x2="235" y2="600"/>
+    <line x1="600" y1="560" x2="600" y2="600"/>
+    <line x1="965" y1="560" x2="965" y2="600"/>
+  </g>
+  <rect x="90" y="600" width="1020" height="76" rx="16" fill="#FFFFFF" stroke="#EFE3DC" filter="url(#a-sh)"/>
+  <text x="600" y="646" font-family="system-ui, -apple-system, sans-serif" font-size="21" font-weight="600" fill="#26201D" text-anchor="middle">Sesuaikan dengan tujuan bisnis Anda</text>
+</svg>

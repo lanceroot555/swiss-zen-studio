@@ -1,5 +1,6 @@
 import { pageCopy, servicesCopy, portfolioCopy, shopCopy, blogCopy, siteConfig, products, addons, navigationConfig, servicePages, contactPageCopy, pageSchemas } from "./site-config";
 import { clientsCopy } from "./clients-content";
+import { profesionalCopy } from "./profesional-content";
 
 // Editable content sections. Overrides stored in the database are deep-merged
 // onto these default objects at runtime (see applyContent).
@@ -14,6 +15,7 @@ export const contentSections = {
   blog: { label: "Halaman blog", target: blogCopy as unknown as Record<string, unknown> },
   shop: { label: "Teks toko", target: shopCopy as unknown as Record<string, unknown> },
   clients: { label: "Logo klien", target: clientsCopy as unknown as Record<string, unknown> },
+  profesional: { label: "Profesional & Terukur", target: profesionalCopy as unknown as Record<string, unknown> },
   contact: { label: "Kontak & analitik", target: siteConfig as unknown as Record<string, unknown> },
 } as const;
 export type ContentKey = keyof typeof contentSections;
