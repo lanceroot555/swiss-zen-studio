@@ -25,6 +25,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { ServiceShowcase } from "@/components/service-showcase";
 import { ClientMarquee } from "@/components/client-marquee";
 import { ProfessionalSection } from "@/components/professional-section";
+import { ProcessBento } from "@/components/process-bento";
 import heroIllustration from "@/assets/hero-illustration.png";
 import { trackEvent } from "@/lib/analytics";
 import { submitContact } from "@/lib/contact.functions";
@@ -117,7 +118,7 @@ function HomePage() {
 
     <section className="border-y border-border bg-secondary section-glow-light"><div className="site-section"><SectionHeading index="02" {...pageCopy.sections.why} /><div className="mt-10 grid gap-x-12 md:grid-cols-2">{pageCopy.principles.map((item,i) => <article key={item.title} className="border-b border-border py-7"><span className="text-xs text-primary">0{i+1}</span><h3 className="mt-4 text-xl font-semibold">{item.title}</h3><p className="mt-3 max-w-lg text-base leading-7 text-muted-foreground">{item.text}</p></article>)}</div></div></section>
 
-    <section id="proses" className="site-section"><SectionHeading index="03" {...pageCopy.sections.process} /><div className="mt-12 grid gap-8 md:grid-cols-4">{pageCopy.steps.map((step,i) => <article key={step.title} className="border-t border-border pt-5"><span className="text-sm text-primary">0{i+1}</span><h3 className="mt-6 text-lg font-semibold">{step.title}</h3><p className="mt-3 text-base leading-7 text-muted-foreground">{step.text}</p></article>)}</div></section>
+    <ProcessBento />
 
     <section id="portofolio" className="site-section"><SectionHeading index="04" {...pageCopy.sections.portfolio} /><div className="mt-8 flex flex-wrap items-center justify-between gap-5 border-b border-border pb-7 "><p className="text-sm text-muted-foreground">{pageCopy.portfolioPending}</p><Button asChild variant="link" className="p-0"><Link to="/portofolio">{pageCopy.cta.discuss}<ArrowRight /></Link></Button></div></section>
 
